@@ -137,7 +137,8 @@ function url($path = '')
 
 function asset($path)
 {
-    return BASE_URL . 'assets/' . ltrim($path, '/');
+    $baseUrl = rtrim(BASE_URL, '/');
+    return $baseUrl . '/assets/' . ltrim($path, '/');
 }
 
 function old($key, $default = '')

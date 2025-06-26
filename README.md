@@ -4,8 +4,19 @@
 [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
 [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Formation](https://img.shields.io/badge/Formation-100%25%20Gratuite-success?style=for-the-badge&logo=heart&logoColor=white)](https://github.com)
 
-> **Projet tutoriel complet pour maîtriser Docker de A à Z** - Une plateforme d'apprentissage progressive avec 18 modules pédagogiques, de l'introduction aux concepts avancés incluant Symfony et Node.js.
+> **🎁 Formation Docker 100% gratuite et open source** - Une plateforme d'apprentissage progressive avec 18 modules pédagogiques, de l'introduction aux concepts avancés incluant Symfony et Node.js.
+
+## 💖 Formation Entièrement Gratuite
+
+Cette formation Docker complète est **100% gratuite** et mise à disposition de la communauté. Aucun frais, aucun abonnement, juste de la connaissance partagée !
+
+-   ✅ **18 modules complets** accessibles gratuitement
+-   ✅ **Code source ouvert** sous licence MIT
+-   ✅ **Support communautaire** via les issues GitHub
+-   ✅ **Mises à jour régulières** avec les dernières versions Docker
 
 ## 🎯 Objectifs pédagogiques
 

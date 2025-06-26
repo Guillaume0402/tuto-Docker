@@ -79,7 +79,9 @@ class Course
         $stmt->bindParam(':description', $data['description']);
         $stmt->bindParam(':content', $data['content']);
         $stmt->bindParam(':instructor_id', $data['instructor_id']);
-        $stmt->bindParam(':price', $data['price']);
+        // Formation gratuite - prix toujours à 0
+        $price = 0;
+        $stmt->bindParam(':price', $price);
         $stmt->bindParam(':duration_hours', $data['duration_hours']);
         $stmt->bindParam(':level', $data['level']);
         $stmt->bindParam(':image_url', $data['image_url'] ?? null);
@@ -152,7 +154,8 @@ class Course
 
     public function formatPrice($price)
     {
-        return number_format($price, 2, ',', ' ') . ' €';
+        // Formation gratuite - retourne toujours "GRATUIT"
+        return '<i class="fas fa-heart me-1"></i>GRATUIT';
     }
 
     public function getLevelBadgeClass($level)

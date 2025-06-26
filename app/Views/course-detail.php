@@ -8,7 +8,6 @@
         'content' => '<h2>Contenu du cours</h2><p>Ce cours couvre tous les aspects essentiels de Docker...</p>',
         'level' => 'débutant',
         'duration_hours' => 8,
-        'price' => 49.99,
         'enrolled_count' => 156,
         'instructor_full_name' => 'Jean Dupont',
         'instructor_name' => 'jean_dupont',
@@ -235,11 +234,13 @@
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            <!-- Prix et inscription -->
+            <!-- Formation gratuite et inscription -->
             <div class="card card-custom mb-4 position-sticky" style="top: 20px;">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <span class="h2 text-success fw-bold"><?= number_format($course['price'], 2, ',', ' ') ?> €</span>
+                        <span class="h2 text-success fw-bold">
+                            <i class="fas fa-heart me-2"></i>FORMATION GRATUITE
+                        </span>
                     </div>
 
                     <?php if ($isEnrolled): ?>
@@ -260,20 +261,20 @@
                             <form method="POST" action="<?= url('/cours/' . $course['id'] . '/enroll') ?>">
                                 <?= csrf_field() ?>
                                 <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
-                                    <i class="fas fa-credit-card me-2"></i>
-                                    S'inscrire maintenant
+                                    <i class="fas fa-play me-2"></i>
+                                    S'inscrire gratuitement
                                 </button>
                             </form>
                         <?php else: ?>
                             <a href="<?= url('/register') ?>" class="btn btn-primary w-100 btn-lg mb-3">
                                 <i class="fas fa-user-plus me-2"></i>
-                                Créer un compte pour s'inscrire
+                                Créer un compte pour commencer
                             </a>
                         <?php endif; ?>
 
                         <p class="text-muted mb-3">
-                            <i class="fas fa-shield-alt me-1"></i>
-                            Garantie 30 jours satisfait ou remboursé
+                            <i class="fas fa-info-circle me-1"></i>
+                            Formation 100% gratuite et accessible à vie
                         </p>
                     <?php endif; ?>
 

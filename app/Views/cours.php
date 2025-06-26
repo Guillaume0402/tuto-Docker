@@ -3,6 +3,11 @@
     <div class="row mb-5">
         <div class="col-12">
             <div class="text-center mb-4">
+                <div class="mb-3">
+                    <span class="badge bg-success fs-5 px-4 py-2 rounded-pill">
+                        <i class="fas fa-heart me-2"></i>Formation 100% gratuite
+                    </span>
+                </div>
                 <h1 class="fw-bold mb-3">
                     <i class="fab fa-docker me-2 text-primary"></i>
                     Formation Docker Complète
@@ -107,8 +112,6 @@
                         <option value="popular">Plus populaires</option>
                         <option value="duration_short">Durée croissante</option>
                         <option value="duration_long">Durée décroissante</option>
-                        <option value="price_low">Prix croissant</option>
-                        <option value="price_high">Prix décroissant</option>
                     </select>
                 </div>
             </div>
@@ -116,7 +119,7 @@
     </div>
 
     <?php
-    // Simulation des cours - Plan de formation Docker complet (18 modules)
+    // Simulation des cours - Plan de formation Docker complet (18 modules) - FORMATION GRATUITE
     $courses = $courses ?? [
         // NIVEAU DÉBUTANT
         [
@@ -125,7 +128,6 @@
             'description' => 'Découvrez ce qu\'est Docker, pourquoi l\'utiliser, et les concepts de base : conteneurs vs machines virtuelles, images, registres.',
             'level' => 'débutant',
             'duration_hours' => 4,
-            'price' => 29.99,
             'enrolled_count' => 342,
             'instructor_full_name' => 'Jean Dupont',
             'image_url' => null,
@@ -137,7 +139,6 @@
             'description' => 'Installation de Docker sur différents OS, configuration initiale, commandes de base et premier conteneur "Hello World".',
             'level' => 'débutant',
             'duration_hours' => 3,
-            'price' => 24.99,
             'enrolled_count' => 298,
             'instructor_full_name' => 'Sophie Martin',
             'image_url' => null,
@@ -149,7 +150,6 @@
             'description' => 'Gestion des images : pull/push, création, optimisation, bonnes pratiques. Maîtrisez le système d\'images Docker.',
             'level' => 'débutant',
             'duration_hours' => 5,
-            'price' => 34.99,
             'enrolled_count' => 267,
             'instructor_full_name' => 'Pierre Bernard',
             'image_url' => null,
@@ -161,7 +161,6 @@
             'description' => 'Cycle de vie des conteneurs, volumes, ports, variables d\'environnement, logs et monitoring de base.',
             'level' => 'débutant',
             'duration_hours' => 6,
-            'price' => 39.99,
             'enrolled_count' => 234,
             'instructor_full_name' => 'Marie Leroy',
             'image_url' => null,
@@ -173,7 +172,6 @@
             'description' => 'Syntaxe Dockerfile, instructions avancées, multi-stage builds, optimisation des layers et cache.',
             'level' => 'intermédiaire',
             'duration_hours' => 7,
-            'price' => 44.99,
             'enrolled_count' => 189,
             'instructor_full_name' => 'Thomas Robert',
             'image_url' => null,
@@ -187,7 +185,6 @@
             'description' => 'Orchestration avec Docker Compose : services, réseaux, volumes, environnements et déploiement.',
             'level' => 'intermédiaire',
             'duration_hours' => 8,
-            'price' => 54.99,
             'enrolled_count' => 156,
             'instructor_full_name' => 'Laurent Dubois',
             'image_url' => null,
@@ -199,7 +196,6 @@
             'description' => 'Types de réseaux, communication inter-conteneurs, isolation, bridge, host, overlay et configuration avancée.',
             'level' => 'intermédiaire',
             'duration_hours' => 6,
-            'price' => 49.99,
             'enrolled_count' => 134,
             'instructor_full_name' => 'Anne Moreau',
             'image_url' => null,
@@ -211,7 +207,6 @@
             'description' => 'Persistance des données : volumes nommés, bind mounts, tmpfs, stratégies de sauvegarde et performance.',
             'level' => 'intermédiaire',
             'duration_hours' => 5,
-            'price' => 42.99,
             'enrolled_count' => 145,
             'instructor_full_name' => 'Nicolas Petit',
             'image_url' => null,
@@ -223,7 +218,6 @@
             'description' => 'Bonnes pratiques de sécurité : utilisateurs non-root, secrets, scanning d\'images, politiques de sécurité.',
             'level' => 'intermédiaire',
             'duration_hours' => 7,
-            'price' => 59.99,
             'enrolled_count' => 98,
             'instructor_full_name' => 'Sylvie Roux',
             'image_url' => null,
@@ -235,7 +229,6 @@
             'description' => 'Docker Hub, registres privés, Harbor, distribution d\'images, versionning et gestion des artifacts.',
             'level' => 'intermédiaire',
             'duration_hours' => 6,
-            'price' => 47.99,
             'enrolled_count' => 112,
             'instructor_full_name' => 'Julien Blanc',
             'image_url' => null,
@@ -249,7 +242,6 @@
             'description' => 'Clusters Docker Swarm, services, scaling, load balancing, rolling updates et haute disponibilité.',
             'level' => 'avancé',
             'duration_hours' => 10,
-            'price' => 79.99,
             'enrolled_count' => 76,
             'instructor_full_name' => 'Frédéric Noir',
             'image_url' => null,
@@ -261,7 +253,6 @@
             'description' => 'Migration de Docker vers Kubernetes : pods, services, deployments, ingress et écosystème K8s.',
             'level' => 'avancé',
             'duration_hours' => 12,
-            'price' => 89.99,
             'enrolled_count' => 67,
             'instructor_full_name' => 'Catherine Vert',
             'image_url' => null,
@@ -273,7 +264,6 @@
             'description' => 'Intégration continue : Jenkins, GitLab CI, GitHub Actions, automatisation des builds et déploiements.',
             'level' => 'avancé',
             'duration_hours' => 9,
-            'price' => 74.99,
             'enrolled_count' => 89,
             'instructor_full_name' => 'Vincent Jaune',
             'image_url' => null,
@@ -285,7 +275,6 @@
             'description' => 'Supervision des conteneurs : Prometheus, Grafana, ELK Stack, tracing distribué et métriques.',
             'level' => 'avancé',
             'duration_hours' => 8,
-            'price' => 69.99,
             'enrolled_count' => 54,
             'instructor_full_name' => 'Isabelle Rose',
             'image_url' => null,
@@ -297,7 +286,6 @@
             'description' => 'Optimisation des images, ressources, cache, profiling, benchmarking et tuning des performances.',
             'level' => 'avancé',
             'duration_hours' => 7,
-            'price' => 64.99,
             'enrolled_count' => 62,
             'instructor_full_name' => 'Olivier Bleu',
             'image_url' => null,
@@ -311,7 +299,6 @@
             'description' => 'Projet complet : application web avec base de données, reverse proxy, SSL, monitoring et déploiement.',
             'level' => 'avancé',
             'duration_hours' => 15,
-            'price' => 99.99,
             'enrolled_count' => 43,
             'instructor_full_name' => 'Maxime Gris',
             'image_url' => null,
@@ -323,7 +310,6 @@
             'description' => 'Containerisation d\'applications Symfony : environnements dev/prod, tests, cache Redis, base de données.',
             'level' => 'avancé',
             'duration_hours' => 12,
-            'price' => 84.99,
             'enrolled_count' => 38,
             'instructor_full_name' => 'Céline Violet',
             'image_url' => null,
@@ -335,7 +321,6 @@
             'description' => 'Architecture microservices avec Node.js : API Gateway, communication async, monitoring distribué.',
             'level' => 'avancé',
             'duration_hours' => 14,
-            'price' => 94.99,
             'enrolled_count' => 31,
             'instructor_full_name' => 'Alexandre Orange',
             'image_url' => null,
@@ -348,7 +333,6 @@
         <?php foreach ($courses as $course): ?>
             <div class="col-lg-4 col-md-6 mb-4 course-item"
                 data-level="<?= $course['level'] ?>"
-                data-price="<?= $course['price'] ?>"
                 data-popularity="<?= $course['enrolled_count'] ?>"
                 data-duration="<?= $course['duration_hours'] ?>"
                 data-order="<?= $course['id'] ?>"
@@ -415,8 +399,8 @@
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="course-price fw-bold text-success fs-5">
-                                    <?= number_format($course['price'], 2, ',', ' ') ?> €
+                                <span class="fw-bold text-success fs-5">
+                                    <i class="fas fa-heart me-1"></i>GRATUIT
                                 </span>
                                 <div class="btn-group">
                                     <a href="<?= url('/cours/' . $course['id']) ?>" class="btn btn-outline-primary btn-sm">
@@ -617,10 +601,6 @@
                         return parseInt(a.dataset.duration) - parseInt(b.dataset.duration);
                     case 'duration_long':
                         return parseInt(b.dataset.duration) - parseInt(a.dataset.duration);
-                    case 'price_low':
-                        return parseFloat(a.dataset.price) - parseFloat(b.dataset.price);
-                    case 'price_high':
-                        return parseFloat(b.dataset.price) - parseFloat(a.dataset.price);
                     case 'order':
                     default:
                         return parseInt(a.dataset.order) - parseInt(b.dataset.order);

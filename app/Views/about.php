@@ -2,6 +2,11 @@
     <!-- Header -->
     <div class="row mb-5">
         <div class="col-12 text-center">
+            <div class="mb-3">
+                <span class="badge bg-success fs-5 px-4 py-2 rounded-pill">
+                    <i class="fas fa-gift me-2"></i>Formation 100% gratuite et open source
+                </span>
+            </div>
             <h1 class="display-4 fw-bold mb-3">À propos de Tuto Docker</h1>
             <p class="lead text-muted">
                 Votre référence pour apprendre Docker de manière progressive et pratique
@@ -26,6 +31,11 @@
                         Nous croyons que la conteneurisation est l'avenir du développement et du déploiement d'applications.
                         Notre objectif est de rendre cette technologie accessible à tous, du débutant au développeur expérimenté.
                     </p>
+                    <div class="alert alert-success">
+                        <i class="fas fa-heart me-2"></i>
+                        <strong>Formation 100% gratuite :</strong> Parce que nous croyons que la connaissance doit être accessible à tous,
+                        cette formation complète est entièrement gratuite et open source.
+                    </div>
                 </div>
             </div>
         </div>

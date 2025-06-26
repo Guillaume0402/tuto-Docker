@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-4">
                 <h5 class="fw-bold mb-3">
-                    <img src="<?= asset('img/logo.svg') ?>" alt="Logo" width="30" height="30" class="me-2">
+                    <img src="/assets/img/logo.svg" alt="Logo" width="30" height="30" class="me-2">
                     Tuto Docker
                 </h5>
                 <p class="mb-3">

@@ -21,5 +21,9 @@ RUN echo "error_log = /var/www/html/logs/error.log" >> /usr/local/etc/php/conf.d
 # Définir le répertoire de travail
 WORKDIR /var/www/html
 
+RUN echo "ServerTokens Prod\nServerSignature Off" > /etc/apache2/conf-available/security.conf \
+    && a2enconf security
+
+
 # Exposer le port 80
 EXPOSE 80

@@ -97,13 +97,13 @@ INSERT INTO
         level
     )
 VALUES
-    -- NIVEAU DÉBUTANT (Modules 1-4)
+    -- NIVEAU DÉBUTANT (Modules 1-4) - FORMATION GRATUITE
     (
         'Module 1 : Introduction et concepts fondamentaux',
         'Découvrez ce qu\'est Docker, pourquoi l\'utiliser, et les concepts de base : conteneurs vs machines virtuelles, images, registres.',
         'Ce module couvre les concepts fondamentaux de Docker : qu\'est-ce que la conteneurisation, comparaison avec les machines virtuelles, architecture Docker, images et conteneurs, Docker Hub et registres.',
         1,
-        29.99,
+        0.00,
         4,
         'débutant'
     ),
@@ -112,7 +112,7 @@ VALUES
         'Installation de Docker sur différents OS, configuration initiale, commandes de base et premier conteneur "Hello World".',
         'Installation Docker Desktop sur Windows/Mac/Linux, configuration initiale, première commande docker run, gestion des conteneurs de base.',
         1,
-        24.99,
+        0.00,
         3,
         'débutant'
     ),
@@ -121,7 +121,7 @@ VALUES
         'Gestion des images : pull/push, création, optimisation, bonnes pratiques. Maîtrisez le système d\'images Docker.',
         'Téléchargement et envoi d\'images, création d\'images personnalisées, optimisation de la taille, layers et cache, bonnes pratiques.',
         1,
-        34.99,
+        0.00,
         5,
         'débutant'
     ),
@@ -130,18 +130,18 @@ VALUES
         'Cycle de vie des conteneurs, volumes, ports, variables d\'environnement, logs et monitoring de base.',
         'Cycle de vie complet des conteneurs, gestion des ports et volumes, variables d\'environnement, logs et debugging.',
         1,
-        39.99,
+        0.00,
         6,
         'débutant'
     ),
 
--- NIVEAU INTERMÉDIAIRE (Modules 5-10)
+-- NIVEAU INTERMÉDIAIRE (Modules 5-10) - FORMATION GRATUITE
 (
     'Module 5 : Dockerfile - Maîtrise complète',
     'Syntaxe Dockerfile, instructions avancées, multi-stage builds, optimisation des layers et cache.',
     'Syntaxe complète Dockerfile, instructions avancées, multi-stage builds, optimisation des layers, gestion du cache.',
     1,
-    44.99,
+    0.00,
     7,
     'intermédiaire'
 ),
@@ -150,7 +150,7 @@ VALUES
     'Orchestration avec Docker Compose : services, réseaux, volumes, environnements et déploiement.',
     'Docker Compose complet : fichiers YAML, services multiples, réseaux custom, volumes nommés, environnements.',
     1,
-    54.99,
+    0.00,
     8,
     'intermédiaire'
 ),
@@ -159,7 +159,7 @@ VALUES
     'Types de réseaux, communication inter-conteneurs, isolation, bridge, host, overlay et configuration avancée.',
     'Réseaux Docker : bridge, host, overlay, custom networks, communication inter-conteneurs, isolation réseau.',
     1,
-    49.99,
+    0.00,
     6,
     'intermédiaire'
 ),
@@ -168,7 +168,7 @@ VALUES
     'Persistance des données : volumes nommés, bind mounts, tmpfs, stratégies de sauvegarde et performance.',
     'Stockage Docker : volumes nommés, bind mounts, tmpfs, persistance des données, sauvegarde et performance.',
     1,
-    42.99,
+    0.00,
     5,
     'intermédiaire'
 ),
@@ -177,7 +177,7 @@ VALUES
     'Bonnes pratiques de sécurité : utilisateurs non-root, secrets, scanning d\'images, politiques de sécurité.',
     'Sécurité Docker : utilisateurs non-root, secrets management, scanning d\'images, politiques de sécurité, hardening.',
     1,
-    59.99,
+    0.00,
     7,
     'intermédiaire'
 ),
@@ -186,18 +186,18 @@ VALUES
     'Docker Hub, registres privés, Harbor, distribution d\'images, versionning et gestion des artifacts.',
     'Registres Docker : Docker Hub, registres privés, Harbor, distribution d\'images, versionning, artifacts.',
     1,
-    47.99,
+    0.00,
     6,
     'intermédiaire'
 ),
 
--- NIVEAU AVANCÉ (Modules 11-18)
+-- NIVEAU AVANCÉ (Modules 11-18) - FORMATION GRATUITE
 (
     'Module 11 : Docker Swarm - Orchestration native',
     'Clusters Docker Swarm, services, scaling, load balancing, rolling updates et haute disponibilité.',
     'Docker Swarm : clusters, services, scaling automatique, load balancing, rolling updates, haute disponibilité.',
     1,
-    79.99,
+    0.00,
     10,
     'avancé'
 ),
@@ -206,7 +206,7 @@ VALUES
     'Migration de Docker vers Kubernetes : pods, services, deployments, ingress et écosystème K8s.',
     'Kubernetes : migration depuis Docker, pods, services, deployments, ingress, écosystème et outils.',
     1,
-    89.99,
+    0.00,
     12,
     'avancé'
 ),
@@ -215,7 +215,7 @@ VALUES
     'Intégration continue : Jenkins, GitLab CI, GitHub Actions, automatisation des builds et déploiements.',
     'CI/CD Docker : Jenkins, GitLab CI, GitHub Actions, automatisation builds, tests et déploiements.',
     1,
-    74.99,
+    0.00,
     9,
     'avancé'
 ),
@@ -224,7 +224,7 @@ VALUES
     'Supervision des conteneurs : Prometheus, Grafana, ELK Stack, tracing distribué et métriques.',
     'Monitoring Docker : Prometheus, Grafana, ELK Stack, tracing distribué, métriques et alerting.',
     1,
-    69.99,
+    0.00,
     8,
     'avancé'
 ),
@@ -233,18 +233,18 @@ VALUES
     'Optimisation des images, ressources, cache, profiling, benchmarking et tuning des performances.',
     'Performance Docker : optimisation images, ressources, cache, profiling, benchmarking, tuning.',
     1,
-    64.99,
+    0.00,
     7,
     'avancé'
 ),
 
--- PROJETS PRATIQUES (Modules 16-18)
+-- PROJETS PRATIQUES (Modules 16-18) - FORMATION GRATUITE
 (
     'Module 16 : Projet - Application Web complète',
     'Projet complet : application web avec base de données, reverse proxy, SSL, monitoring et déploiement.',
     'Projet complet : stack LAMP dockerisée, reverse proxy Nginx, SSL Let\'s Encrypt, monitoring Prometheus.',
     1,
-    99.99,
+    0.00,
     15,
     'avancé'
 ),
@@ -253,7 +253,7 @@ VALUES
     'Containerisation d\'applications Symfony : environnements dev/prod, tests, cache Redis, base de données.',
     'Symfony + Docker : environnements optimisés, Doctrine, cache Redis, tests automatisés, déploiement.',
     1,
-    84.99,
+    0.00,
     12,
     'avancé'
 ),
@@ -262,7 +262,7 @@ VALUES
     'Architecture microservices avec Node.js : API Gateway, communication async, monitoring distribué.',
     'Node.js + Docker : microservices, API Gateway, communication async, monitoring distribué, scalabilité.',
     1,
-    94.99,
+    0.00,
     14,
     'avancé'
 );

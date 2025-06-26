@@ -2,6 +2,11 @@
     <div class="container">
         <div class="row align-items-center min-vh-50">
             <div class="col-lg-6">
+                <div class="mb-3 fade-in">
+                    <span class="badge bg-success fs-6 px-3 py-2 rounded-pill">
+                        <i class="fas fa-heart me-2"></i>Formation 100% gratuite
+                    </span>
+                </div>
                 <h1 class="display-4 fw-bold mb-4 fade-in">
                     Apprenez Docker facilement
                 </h1>
@@ -91,34 +96,31 @@
         </div>
 
         <?php
-        // Simuler quelques cours pour la démonstration
+        // Cours populaires de la formation Docker complète - GRATUITS
         $featuredCourses = [
             [
                 'id' => 1,
-                'title' => 'Introduction à Docker',
-                'description' => 'Découvrez les bases de Docker et de la conteneurisation',
+                'title' => 'Module 1 : Introduction et concepts fondamentaux',
+                'description' => 'Découvrez ce qu\'est Docker, pourquoi l\'utiliser, et les concepts de base',
                 'level' => 'débutant',
+                'duration_hours' => 4,
+                'enrolled_count' => 342
+            ],
+            [
+                'id' => 6,
+                'title' => 'Module 6 : Docker Compose - Applications multi-conteneurs',
+                'description' => 'Orchestration avec Docker Compose : services, réseaux, volumes',
+                'level' => 'intermédiaire',
                 'duration_hours' => 8,
-                'price' => 49.99,
                 'enrolled_count' => 156
             ],
             [
-                'id' => 2,
-                'title' => 'Docker Compose avancé',
-                'description' => 'Orchestrez vos applications multi-conteneurs',
-                'level' => 'intermédiaire',
-                'duration_hours' => 12,
-                'price' => 79.99,
-                'enrolled_count' => 89
-            ],
-            [
-                'id' => 3,
-                'title' => 'Déploiement en production',
-                'description' => 'Déployez vos applications Docker en production',
+                'id' => 16,
+                'title' => 'Module 16 : Projet - Application Web complète',
+                'description' => 'Projet complet avec base de données, reverse proxy, SSL et monitoring',
                 'level' => 'avancé',
-                'duration_hours' => 16,
-                'price' => 99.99,
-                'enrolled_count' => 67
+                'duration_hours' => 15,
+                'enrolled_count' => 43
             ]
         ];
         ?>
@@ -141,14 +143,16 @@
 
                         <div class="mt-auto">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <span class="course-price"><?= number_format($course['price'], 2, ',', ' ') ?> €</span>
+                                <span class="badge bg-success fs-6">
+                                    <i class="fas fa-heart me-1"></i>GRATUIT
+                                </span>
                                 <small class="text-muted">
                                     <i class="fas fa-users me-1"></i><?= $course['enrolled_count'] ?> inscrits
                                 </small>
                             </div>
 
                             <a href="<?= url('/cours/' . $course['id']) ?>" class="btn btn-primary w-100 btn-custom">
-                                Voir le cours
+                                Commencer maintenant
                             </a>
                         </div>
                     </div>
@@ -166,20 +170,20 @@
     <!-- Section statistiques -->
     <div class="row text-center py-5 bg-light rounded">
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-primary">500+</div>
-            <div class="text-muted">Étudiants actifs</div>
+            <div class="display-4 fw-bold text-primary">1200+</div>
+            <div class="text-muted">Étudiants inscrits</div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-success">25+</div>
-            <div class="text-muted">Cours disponibles</div>
+            <div class="display-4 fw-bold text-success">18</div>
+            <div class="text-muted">Modules progressifs</div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-warning">95%</div>
-            <div class="text-muted">Taux de satisfaction</div>
+            <div class="display-4 fw-bold text-warning">150+</div>
+            <div class="text-muted">Heures de formation</div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-info">24/7</div>
-            <div class="text-muted">Support disponible</div>
+            <div class="display-4 fw-bold text-info">3</div>
+            <div class="text-muted">Projets complets</div>
         </div>
     </div>
 </div>

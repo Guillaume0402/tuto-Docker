@@ -7,6 +7,31 @@ et ce projet adhère au [Versioning Sémantique](https://semver.org/lang/fr/).
 
 ## [Non publié]
 
+### 🎁 Version 1.1.0 - Transformation vers la gratuité complète
+
+#### Ajouté
+
+-   **Formation 100% gratuite** : Suppression de toutes les références aux prix
+-   **Badges "Gratuit"** sur toutes les pages principales (accueil, cours, about)
+-   **Scripts de lancement** avec message de gratuité (`start-free-training.sh/.bat`)
+-   **Documentation enrichie** avec mise en avant de la gratuité
+-   **Licence MIT** et code open source
+
+#### Modifié
+
+-   **Base de données** : Tous les prix des cours mis à 0.00
+-   **Interface utilisateur** : Remplacement des prix par badges "GRATUIT"
+-   **Modèle Course** : Prix fixé à 0 par défaut pour nouveaux cours
+-   **Messages d'inscription** : Adaptation pour formation gratuite
+-   **README.md** : Mise en avant de la gratuité avec badges
+
+#### Supprimé
+
+-   Toutes les références aux prix dans les vues
+-   Options de tri par prix
+-   Garantie de remboursement (plus nécessaire)
+-   Icônes de carte de crédit remplacées par cœurs
+
 ### Prévu pour la v2.0
 
 -   API REST complète pour les modules
