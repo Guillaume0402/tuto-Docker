@@ -1,0 +1,72 @@
+# Fichiers de configuration sensibles
+.env
+.env.local
+.env.production
+
+# Logs
+logs/*.log
+*.log
+/logs/*
+!/logs/.gitkeep
+
+# Fichiers temporaires
+/tmp/*
+!/tmp/.gitkeep
+
+# Cache
+/cache/*
+!/cache/.gitkeep
+
+# Uploads utilisateurs
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Dossiers de contact logs
+/mail/contact_logs/*
+!/mail/contact_logs/.gitkeep
+
+# Dépendances
+/vendor/
+/node_modules/
+
+# IDE et éditeurs
+.vscode/
+.idea/
+*.sublime-*
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.phar
+composer.lock
+
+# NPM / Yarn
+package-lock.json
+yarn.lock
+
+# Sass/SCSS compiled
+/public/assets/css/*.css.map
+
+# Docker
+.dockerignore
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Icon?
+
+# Windows specific
+Thumbs.db
+*.lnk
+
+# Linux specific
+*~
+
+# Temporary files
+*.tmp
+*.temp

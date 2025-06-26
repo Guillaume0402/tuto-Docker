@@ -1,0 +1,18 @@
+// Placeholder pour les fichiers SCSS de Bootstrap
+//
+// Instructions :
+// 1. Téléchargez Bootstrap 5 depuis https://getbootstrap.com/
+// 2. Copiez le contenu du dossier 'scss' de Bootstrap dans ce dossier
+// 3. Décommentez la ligne suivante dans style.scss :
+//    @import 'bootstrap/bootstrap';
+//
+// Structure attendue :
+// bootstrap/
+// ├── bootstrap.scss
+// ├── _variables.scss
+// ├── _mixins.scss
+// ├── _functions.scss
+// ├── _utilities.scss
+// └── ... (autres fichiers Bootstrap)
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css");
