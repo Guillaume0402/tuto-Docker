@@ -17,13 +17,19 @@
                 </p>
             </div>
 
+            <?php
+            // Récupération des statistiques pour la page des cours
+            $statistics = new Statistics();
+            $stats = $statistics->getHomeStatistics();
+            ?>
+
             <!-- Statistiques du parcours -->
             <div class="row g-4 mb-4">
                 <div class="col-md-3 col-6">
                     <div class="card bg-light border-0 text-center h-100">
                         <div class="card-body">
                             <i class="fas fa-graduation-cap fa-2x text-primary mb-2"></i>
-                            <h4 class="fw-bold">18</h4>
+                            <h4 class="fw-bold"><?= $stats['totalCourses'] ?></h4>
                             <small class="text-muted">Modules de formation</small>
                         </div>
                     </div>
@@ -32,7 +38,7 @@
                     <div class="card bg-light border-0 text-center h-100">
                         <div class="card-body">
                             <i class="fas fa-clock fa-2x text-success mb-2"></i>
-                            <h4 class="fw-bold">150+</h4>
+                            <h4 class="fw-bold"><?= $stats['totalHours'] ?>+</h4>
                             <small class="text-muted">Heures de contenu</small>
                         </div>
                     </div>
@@ -41,8 +47,8 @@
                     <div class="card bg-light border-0 text-center h-100">
                         <div class="card-body">
                             <i class="fas fa-users fa-2x text-warning mb-2"></i>
-                            <h4 class="fw-bold">1200+</h4>
-                            <small class="text-muted">Étudiants inscrits</small>
+                            <h4 class="fw-bold"><?= $statistics->formatStudentCount($stats['totalStudents']) ?></h4>
+                            <small class="text-muted"><?= $statistics->formatStudentLabel($stats['totalStudents']) ?></small>
                         </div>
                     </div>
                 </div>
@@ -50,7 +56,7 @@
                     <div class="card bg-light border-0 text-center h-100">
                         <div class="card-body">
                             <i class="fas fa-project-diagram fa-2x text-info mb-2"></i>
-                            <h4 class="fw-bold">3</h4>
+                            <h4 class="fw-bold"><?= $stats['totalProjects'] ?></h4>
                             <small class="text-muted">Projets complets</small>
                         </div>
                     </div>

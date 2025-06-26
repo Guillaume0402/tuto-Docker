@@ -267,6 +267,15 @@ VALUES
     'avancé'
 );
 
+-- Insertion de quelques inscriptions d'exemple pour tester les statistiques
+INSERT INTO enrollments (user_id, course_id, progress) VALUES
+(1, 1, 100.00),  -- Admin a terminé le module 1
+(1, 2, 75.50),   -- Admin est à 75% du module 2
+(1, 3, 45.00),   -- Admin est à 45% du module 3
+(2, 1, 100.00),  -- John_doe a terminé le module 1
+(2, 2, 50.00),   -- John_doe est à 50% du module 2
+(2, 6, 25.00);   -- John_doe a commencé le module 6
+
 INSERT INTO
     messages (name, email, subject, message)
 VALUES (

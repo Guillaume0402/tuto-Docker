@@ -167,22 +167,30 @@
         </div>
     </div>
 
+    <?php
+    // Récupération des statistiques réelles depuis la base de données
+    $statistics = new Statistics();
+    $stats = $statistics->getHomeStatistics();
+    ?>
+
     <!-- Section statistiques -->
     <div class="row text-center py-5 bg-light rounded">
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-primary">1200+</div>
-            <div class="text-muted">Étudiants inscrits</div>
+            <div class="display-4 fw-bold text-primary">
+                <?= $statistics->formatStudentCount($stats['totalStudents']) ?>
+            </div>
+            <div class="text-muted"><?= $statistics->formatStudentLabel($stats['totalStudents']) ?></div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-success">18</div>
+            <div class="display-4 fw-bold text-success"><?= $stats['totalCourses'] ?></div>
             <div class="text-muted">Modules progressifs</div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-warning">150+</div>
+            <div class="display-4 fw-bold text-warning"><?= $stats['totalHours'] ?>+</div>
             <div class="text-muted">Heures de formation</div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="display-4 fw-bold text-info">3</div>
+            <div class="display-4 fw-bold text-info"><?= $stats['totalProjects'] ?></div>
             <div class="text-muted">Projets complets</div>
         </div>
     </div>
