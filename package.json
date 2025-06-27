@@ -1,13 +1,19 @@
 {
-  "name": "tuto-docker",
-  "version": "1.0.0",
-  "description": "[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)\r [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)\r [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)\r [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch public/assets/scss:public/assets/css"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "name": "tuto-docker",
+    "version": "1.0.0",
+    "description": "[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)\r [![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)\r [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)\r [![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com)",
+    "main": "index.js",
+    "scripts": {
+        "build-css": "sass public/assets/scss/style.scss public/assets/css/style.css --style compressed",
+        "watch-css": "sass --watch public/assets/scss/style.scss:public/assets/css/style.css",
+        "dev": "npm run watch-css",
+        "build": "npm run build-css"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "bootstrap": "^5.3.3",
+        "sass": "^1.89.2"
+    }
 }

@@ -1,8 +1,8 @@
 // Import des variables
 @import "variables";
 
-// Import de Bootstrap (vous devrez copier les fichiers SCSS de Bootstrap ici)
-// @import 'bootstrap/bootstrap';
+// Import de Bootstrap avec installation locale
+@import "bootstrap/bootstrap-local";
 
 // Import des styles personnalisés
 @import "custom";
