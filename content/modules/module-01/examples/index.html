@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Premier Site Dockerisé</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .docker-logo {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin: 15px 0;
+            opacity: 0.9;
+        }
+
+        .success-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin: 20px 0;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            margin-bottom: 5px;
+            color: #FFD700;
+        }
+
+        .commands {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #00D2FF;
+        }
+
+        .commands h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #00D2FF;
+        }
+
+        .command-line {
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .next-step {
+            background: linear-gradient(45deg, #FF6B6B, #FF8E53);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .next-step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .footer {
+            margin-top: 30px;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        .docker-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00D2FF;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="docker-logo">🐳</div>
+
+        <h1>Mon Premier Site Dockerisé !</h1>
+
+        <p class="subtitle">
+            Félicitations ! Vous venez de réussir votre premier déploiement avec Docker.
+        </p>
+
+        <div class="success-badge">
+            ✅ Module 1 terminé avec succès !
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🚀 Rapide</h3>
+                <p>Déploiement en secondes</p>
+            </div>
+            <div class="info-card">
+                <h3>🔒 Isolé</h3>
+                <p>Environnement sécurisé</p>
+            </div>
+            <div class="info-card">
+                <h3>📱 Portable</h3>
+                <p>Fonctionne partout</p>
+            </div>
+            <div class="info-card">
+                <h3>⚡ Efficace</h3>
+                <p>Ressources optimisées</p>
+            </div>
+        </div>
+
+        <div class="docker-stats">
+            <div class="stat">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Conteneur</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">80</div>
+                <div class="stat-label">Port exposé</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">~5s</div>
+                <div class="stat-label">Temps de démarrage</div>
+            </div>
+        </div>
+
+        <div class="commands">
+            <h3>🛠️ Commandes utilisées</h3>
+            <div class="command-line">$ docker run -d -p 8080:80 -v $(pwd):/usr/share/nginx/html --name mon-site nginx
+            </div>
+            <div class="command-line">$ docker ps</div>
+            <div class="command-line">$ docker logs mon-site</div>
+        </div>
+
+        <a href="#" class="next-step" onclick="showNextSteps()">
+            🎯 Prochaine étape : Module 2
+        </a>
+
+        <div class="footer">
+            <p>🐳 <strong>Formation Docker - 100% Gratuite</strong></p>
+            <p>Module 1 : Introduction et concepts fondamentaux</p>
+            <p>🌐 Accessible sur <strong>localhost:8080</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function showNextSteps() {
+            alert(`🎉 Bravo ! Vous êtes prêt pour le Module 2 !
+
+📚 Au programme :
+• Commandes Docker avancées
+• Gestion détaillée des images  
+• Options de docker run
+• Premiers Dockerfiles
+• Bonnes pratiques
+
+💡 Conseil : Pratiquez les exercices du TP avant de continuer !`);
+        }
+
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.info-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+        });
+
+        // Affichage des informations du conteneur
+        setInterval(() => {
+            const now = new Date();
+            console.log(`🐳 Docker Container Status - ${now.toLocaleTimeString()}`);
+            console.log('✅ Container: Running');
+            console.log('📡 Port: 8080 → 80');
+            console.log('📁 Volume: Mounted');
+        }, 10000);
+    </script>
+</body>
+
+</html>
