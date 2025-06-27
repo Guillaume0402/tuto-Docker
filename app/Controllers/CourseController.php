@@ -32,10 +32,18 @@ class CourseController extends Controller
             exit;
         }
 
+        // Vérifier si l'utilisateur est inscrit au cours
+        $userId = Session::get('user_id');
+        $isEnrolled = false;
+        if ($userId) {
+            $isEnrolled = $courseModel->isUserEnrolled($userId, $id);
+        }
+
         $data = [
             'title' => $course['title'] . ' - Tuto Docker',
             'course' => $course,
-            'courseModel' => $courseModel
+            'courseModel' => $courseModel,
+            'isEnrolled' => $isEnrolled
         ];
 
         $this->view('course-detail', $data);

@@ -1,8 +1,4 @@
 <div class="container py-5">
-    <?php
-    $isEnrolled = false; // Vérifier si l'utilisateur est inscrit
-    ?>
-
     <div class="row">
         <!-- Contenu principal du cours -->
         <div class="col-lg-8">
@@ -201,16 +197,15 @@
                         </div>
                         <small class="text-muted">Progression : 25% terminé</small>
                     <?php else: ?>
-                        <?php if (is_logged_in()): ?>
-                            <form method="POST" action="<?= url('/cours/' . $course['id'] . '/enroll') ?>">
-                                <?= csrf_field() ?>
+                        <?php if (Session::get('user_id')): ?>
+                            <form method="POST" action="/cours/<?= $course['id'] ?>/enroll">
                                 <button type="submit" class="btn btn-primary w-100 btn-lg mb-3">
                                     <i class="fas fa-play me-2"></i>
                                     S'inscrire gratuitement
                                 </button>
                             </form>
                         <?php else: ?>
-                            <a href="<?= url('/register') ?>" class="btn btn-primary w-100 btn-lg mb-3">
+                            <a href="/register" class="btn btn-primary w-100 btn-lg mb-3">
                                 <i class="fas fa-user-plus me-2"></i>
                                 Créer un compte pour commencer
                             </a>
