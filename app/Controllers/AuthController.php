@@ -120,9 +120,16 @@ class AuthController extends Controller
         $userModel = new User();
         $user = $userModel->find($userId);
 
+        // Récupérer les statistiques d'inscription
+        $enrollmentModel = new Enrollment();
+        $stats = $enrollmentModel->getUserStats($userId);
+        $userCourses = $enrollmentModel->getUserCourses($userId, 5); // Limiter à 5 cours récents
+
         $data = [
             'title' => 'Dashboard - Tuto Docker',
-            'user' => $user
+            'user' => $user,
+            'stats' => $stats,
+            'userCourses' => $userCourses
         ];
 
         $this->view('dashboard', $data);

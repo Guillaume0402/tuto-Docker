@@ -1,3 +1,21 @@
+<?php
+
+/**
+ * Fonction helper pour calculer le temps écoulé
+ */
+function timeAgo($datetime)
+{
+    $time = time() - strtotime($datetime);
+
+    if ($time < 60) return 'Il y a quelques secondes';
+    if ($time < 3600) return 'Il y a ' . floor($time / 60) . ' min';
+    if ($time < 86400) return 'Il y a ' . floor($time / 3600) . ' h';
+    if ($time < 2592000) return 'Il y a ' . floor($time / 86400) . ' j';
+    if ($time < 31536000) return 'Il y a ' . floor($time / 2592000) . ' mois';
+    return 'Il y a ' . floor($time / 31536000) . ' an' . (floor($time / 31536000) > 1 ? 's' : '');
+}
+?>
+
 <div class="container py-5">
     <div class="row">
         <div class="col-12">
@@ -20,7 +38,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="mb-0">5</h4>
+                            <h4 class="mb-0"><?= $stats['total_enrolled'] ?? 0 ?></h4>
                             <small>Cours suivis</small>
                         </div>
                         <i class="fas fa-book-open fa-2x opacity-75"></i>
@@ -34,7 +52,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="mb-0">3</h4>
+                            <h4 class="mb-0"><?= $stats['completed_courses'] ?? 0 ?></h4>
                             <small>Cours terminés</small>
                         </div>
                         <i class="fas fa-trophy fa-2x opacity-75"></i>
@@ -48,7 +66,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="mb-0">2</h4>
+                            <h4 class="mb-0"><?= $stats['in_progress_courses'] ?? 0 ?></h4>
                             <small>En cours</small>
                         </div>
                         <i class="fas fa-clock fa-2x opacity-75"></i>
@@ -62,7 +80,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="mb-0">24h</h4>
+                            <h4 class="mb-0"><?= $stats['total_hours'] ?? 0 ?>h</h4>
                             <small>Temps total</small>
                         </div>
                         <i class="fas fa-user-clock fa-2x opacity-75"></i>
@@ -128,23 +146,10 @@
                 </div>
                 <div class="card-body">
                     <?php
-                    // Simulation de cours en cours
-                    $activeCourses = [
-                        [
-                            'id' => 1,
-                            'title' => 'Introduction à Docker',
-                            'progress' => 75,
-                            'next_lesson' => 'Chapitre 4: Docker Compose',
-                            'level' => 'débutant'
-                        ],
-                        [
-                            'id' => 2,
-                            'title' => 'PHP avec Docker',
-                            'progress' => 45,
-                            'next_lesson' => 'Chapitre 2: Configuration Apache',
-                            'level' => 'intermédiaire'
-                        ]
-                    ];
+                    // Filtrer les cours en cours (progression > 0 et < 100)
+                    $activeCourses = array_filter($userCourses ?? [], function ($course) {
+                        return $course['progress'] > 0 && $course['progress'] < 100;
+                    });
                     ?>
 
                     <?php if (empty($activeCourses)): ?>
@@ -163,7 +168,9 @@
                                     <div class="col-md-8">
                                         <h6 class="mb-1"><?= htmlspecialchars($course['title']) ?></h6>
                                         <p class="text-muted mb-2 small">
-                                            Prochaine leçon: <?= htmlspecialchars($course['next_lesson']) ?>
+                                            <i class="fas fa-clock me-1"></i>
+                                            <?= $course['duration_hours'] ?? 0 ?> heures
+                                            • Inscrit le <?= date('d/m/Y', strtotime($course['enrolled_at'])) ?>
                                         </p>
                                         <div class="progress" style="height: 8px;">
                                             <div class="progress-bar" role="progressbar" style="width: <?= $course['progress'] ?>%"></div>
@@ -199,39 +206,47 @@
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="list-group list-group-flush">
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <strong>Cours terminé:</strong> Introduction à Docker - Chapitre 3
-                            </div>
-                            <small class="text-muted">Il y a 2 heures</small>
+                    <?php if (empty($userCourses)): ?>
+                        <div class="text-center py-4">
+                            <i class="fas fa-history fa-3x text-muted mb-3"></i>
+                            <p class="text-muted">Aucune activité récente</p>
+                            <a href="<?= url('/cours') ?>" class="btn btn-outline-primary btn-sm">
+                                Commencer votre apprentissage
+                            </a>
                         </div>
+                    <?php else: ?>
+                        <div class="list-group list-group-flush">
+                            <?php
+                            // Trier les cours par date d'inscription (plus récent d'abord)
+                            usort($userCourses, function ($a, $b) {
+                                return strtotime($b['enrolled_at']) - strtotime($a['enrolled_at']);
+                            });
 
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-play text-primary me-2"></i>
-                                <strong>Leçon commencée:</strong> PHP avec Docker - Configuration
-                            </div>
-                            <small class="text-muted">Hier</small>
+                            foreach (array_slice($userCourses, 0, 4) as $course):
+                                $timeAgo = timeAgo($course['enrolled_at']);
+                            ?>
+                                <div class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <?php if ($course['progress'] == 100): ?>
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            <strong>Cours terminé:</strong> <?= htmlspecialchars($course['title']) ?>
+                                        <?php elseif ($course['progress'] > 0): ?>
+                                            <i class="fas fa-play text-primary me-2"></i>
+                                            <strong>En cours:</strong> <?= htmlspecialchars($course['title']) ?> (<?= $course['progress'] ?>%)
+                                        <?php else: ?>
+                                            <i class="fas fa-user-plus text-info me-2"></i>
+                                            <strong>Inscription:</strong> <?= htmlspecialchars($course['title']) ?>
+                                        <?php endif; ?>
+                                        <br>
+                                        <small class="text-muted">
+                                            Niveau <?= $course['level'] ?> • <?= $course['duration_hours'] ?>h
+                                        </small>
+                                    </div>
+                                    <small class="text-muted"><?= $timeAgo ?></small>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-certificate text-warning me-2"></i>
-                                <strong>Badge obtenu:</strong> Premiers pas avec Docker
-                            </div>
-                            <small class="text-muted">Il y a 3 jours</small>
-                        </div>
-
-                        <div class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fas fa-user-plus text-info me-2"></i>
-                                <strong>Inscription:</strong> Docker en production
-                            </div>
-                            <small class="text-muted">Il y a 1 semaine</small>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
