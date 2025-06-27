@@ -5,7 +5,7 @@
 // Base commune pour tous les modules
 .module-gradient {
     position: relative;
-    height: 200px;
+    height: 180px; // Hauteur réduite
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +42,7 @@
 // NIVEAU DÉBUTANT - Dégradé bleu/cyan
 .module-gradient-beginner {
     position: relative;
-    height: 200px;
+    height: 180px; // Hauteur réduite
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +80,7 @@
 // NIVEAU INTERMÉDIAIRE - Dégradé orange/rose
 .module-gradient-intermediate {
     position: relative;
-    height: 200px;
+    height: 180px; // Hauteur réduite
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +118,7 @@
 // NIVEAU AVANCÉ - Dégradé violet/magenta
 .module-gradient-advanced {
     position: relative;
-    height: 200px;
+    height: 180px; // Hauteur réduite
     display: flex;
     align-items: center;
     justify-content: center;
@@ -189,7 +189,7 @@
     height: 100%;
 
     .card-body {
-        min-height: 400px; // Hauteur minimale pour uniformiser
+        min-height: 280px; // Hauteur encore plus réduite mais uniforme
 
         .flex-grow-1 {
             flex-grow: 1; // La description prend l'espace disponible
@@ -203,7 +203,7 @@
     .module-gradient-beginner,
     .module-gradient-intermediate,
     .module-gradient-advanced {
-        height: 150px;
+        height: 130px; // Hauteur réduite sur mobile
     }
 
     .module-icon {
@@ -211,6 +211,6 @@
     }
 
     .course-card .card-body {
-        min-height: 350px; // Hauteur réduite sur mobile
+        min-height: 240px; // Hauteur encore plus réduite sur mobile
     }
 }
