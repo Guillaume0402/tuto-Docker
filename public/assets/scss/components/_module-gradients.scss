@@ -2,10 +2,28 @@
 // DÉGRADÉS MODERNES POUR LES MODULES - 3 NIVEAUX SEULEMENT
 // ==========================================================================
 
+// Override spécifique pour éviter le conflit avec .course-image
+.course-image.module-gradient,
+.course-image.module-gradient-beginner,
+.course-image.module-gradient-intermediate,
+.course-image.module-gradient-advanced {
+    height: 100px !important; // Force la hauteur à 100px même avec la classe course-image
+}
+
+// Override responsive pour mobile
+@media (max-width: 768px) {
+    .course-image.module-gradient,
+    .course-image.module-gradient-beginner,
+    .course-image.module-gradient-intermediate,
+    .course-image.module-gradient-advanced {
+        height: 80px !important; // Force la hauteur mobile
+    }
+}
+
 // Base commune pour tous les modules
 .module-gradient {
     position: relative;
-    height: 180px; // Hauteur réduite
+    height: 100px; // Hauteur cohérente avec les autres classes
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,7 +60,7 @@
 // NIVEAU DÉBUTANT - Dégradé bleu/cyan
 .module-gradient-beginner {
     position: relative;
-    height: 180px; // Hauteur réduite
+    height: 100px; // Hauteur cohérente avec la classe de base
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,7 +98,7 @@
 // NIVEAU INTERMÉDIAIRE - Dégradé orange/rose
 .module-gradient-intermediate {
     position: relative;
-    height: 180px; // Hauteur réduite
+    height: 100px; // Hauteur cohérente avec la classe de base
     display: flex;
     align-items: center;
     justify-content: center;
@@ -118,7 +136,7 @@
 // NIVEAU AVANCÉ - Dégradé violet/magenta
 .module-gradient-advanced {
     position: relative;
-    height: 180px; // Hauteur réduite
+    height: 100px; // Hauteur cohérente avec la classe de base
     display: flex;
     align-items: center;
     justify-content: center;
@@ -171,7 +189,7 @@
 }
 
 .module-icon {
-    font-size: 4rem;
+    font-size: 3rem; // Taille réduite pour s'adapter à la hauteur plus petite
     color: white;
     opacity: 0.8;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
@@ -203,11 +221,11 @@
     .module-gradient-beginner,
     .module-gradient-intermediate,
     .module-gradient-advanced {
-        height: 130px; // Hauteur réduite sur mobile
+        height: 80px; // Hauteur très réduite sur mobile pour être sûr que le changement soit visible
     }
 
     .module-icon {
-        font-size: 3rem;
+        font-size: 2.5rem; // Taille réduite sur mobile
     }
 
     .course-card .card-body {

@@ -102,14 +102,15 @@
     overflow: hidden;
 
     .course-image {
-        height: 200px;
+        height: 280px;
         object-fit: cover;
         @include transition(transform);
     }
 
-    &:hover .course-image {
-        transform: scale(1.05);
-    }
+    // Effet de zoom supprimé pour éviter l'effet sur les headers avec dégradé
+    // &:hover .course-image {
+    //     transform: scale(1.05);
+    // }
 
     .course-badge {
         position: absolute;
