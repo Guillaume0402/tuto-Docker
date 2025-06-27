@@ -1,0 +1,184 @@
+// ==========================================================================
+// UTILITY CLASSES
+// ==========================================================================
+
+// Spacing utilities
+.m-0 {
+    margin: 0 !important;
+}
+.mt-0 {
+    margin-top: 0 !important;
+}
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.ml-0 {
+    margin-left: 0 !important;
+}
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+.pt-0 {
+    padding-top: 0 !important;
+}
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+.pl-0 {
+    padding-left: 0 !important;
+}
+.pr-0 {
+    padding-right: 0 !important;
+}
+
+// Text utilities
+.text-center {
+    text-align: center !important;
+}
+.text-left {
+    text-align: left !important;
+}
+.text-right {
+    text-align: right !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+.text-lowercase {
+    text-transform: lowercase !important;
+}
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+
+.font-weight-light {
+    font-weight: $font-weight-light !important;
+}
+.font-weight-normal {
+    font-weight: $font-weight-normal !important;
+}
+.font-weight-bold {
+    font-weight: $font-weight-bold !important;
+}
+
+// Display utilities
+.d-none {
+    display: none !important;
+}
+.d-block {
+    display: block !important;
+}
+.d-inline {
+    display: inline !important;
+}
+.d-inline-block {
+    display: inline-block !important;
+}
+.d-flex {
+    display: flex !important;
+}
+
+// Flex utilities
+.justify-content-start {
+    justify-content: flex-start !important;
+}
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+.justify-content-center {
+    justify-content: center !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.align-items-start {
+    align-items: flex-start !important;
+}
+.align-items-end {
+    align-items: flex-end !important;
+}
+.align-items-center {
+    align-items: center !important;
+}
+
+// Color utilities
+.text-primary {
+    color: $primary-color !important;
+}
+.text-secondary {
+    color: $secondary-color !important;
+}
+.text-success {
+    color: $success-color !important;
+}
+.text-danger {
+    color: $danger-color !important;
+}
+.text-warning {
+    color: $warning-color !important;
+}
+.text-info {
+    color: $info-color !important;
+}
+.text-muted {
+    color: $text-muted !important;
+}
+
+// Background utilities
+.bg-primary {
+    background-color: $primary-color !important;
+}
+.bg-secondary {
+    background-color: $secondary-color !important;
+}
+.bg-success {
+    background-color: $success-color !important;
+}
+.bg-danger {
+    background-color: $danger-color !important;
+}
+.bg-warning {
+    background-color: $warning-color !important;
+}
+.bg-info {
+    background-color: $info-color !important;
+}
+.bg-light {
+    background-color: $light-color !important;
+}
+.bg-dark {
+    background-color: $dark-color !important;
+}
+
+// Border utilities
+.border {
+    border: 1px solid $border-color !important;
+}
+.border-0 {
+    border: 0 !important;
+}
+.border-top {
+    border-top: 1px solid $border-color !important;
+}
+.border-bottom {
+    border-bottom: 1px solid $border-color !important;
+}
+
+.rounded {
+    border-radius: $border-radius !important;
+}
+.rounded-0 {
+    border-radius: 0 !important;
+}
+.rounded-sm {
+    border-radius: $border-radius-sm !important;
+}
+.rounded-lg {
+    border-radius: $border-radius-lg !important;
+}

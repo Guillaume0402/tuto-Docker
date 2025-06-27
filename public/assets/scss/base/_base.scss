@@ -1,0 +1,88 @@
+// ==========================================================================
+// BASE STYLES
+// ==========================================================================
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+}
+
+body {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    color: $text-color;
+    background-color: $light-color;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+// Liens
+a {
+    color: $primary-color;
+    text-decoration: none;
+    @include transition(color);
+
+    &:hover {
+        color: darken($primary-color, 15%);
+        text-decoration: underline;
+    }
+
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}
+
+// Titres
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: $font-weight-semibold;
+    line-height: $line-height-sm;
+    color: $dark-color;
+}
+
+// Paragraphes
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+// Listes
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+}
+
+// Images
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+// Code
+code {
+    font-family: $font-family-code;
+    font-size: 87.5%;
+    color: $danger-color;
+    background-color: rgba($danger-color, 0.1);
+    padding: 0.125rem 0.25rem;
+    border-radius: $border-radius-sm;
+}

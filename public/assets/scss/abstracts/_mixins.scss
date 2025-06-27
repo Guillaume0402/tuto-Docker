@@ -1,0 +1,75 @@
+// ==========================================================================
+// MIXINS
+// ==========================================================================
+
+// Mixin pour les transitions
+@mixin transition($property: all, $duration: 0.3s, $ease: ease) {
+    transition: $property $duration $ease;
+}
+
+// Mixin pour les boutons personnalisés
+@mixin custom-button-variant($bg-color, $text-color: white) {
+    background-color: $bg-color;
+    color: $text-color;
+    border: 1px solid $bg-color;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+        border-color: darken($bg-color, 10%);
+        color: $text-color;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem rgba($bg-color, 0.25);
+    }
+}
+
+// Mixin pour les cards
+@mixin card-custom($border-radius: 8px, $shadow: true) {
+    border-radius: $border-radius;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+
+    @if $shadow {
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+
+    &:hover {
+        @if $shadow {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        transform: translateY(-2px);
+    }
+}
+
+// Mixin pour les gradients
+@mixin gradient($start-color, $end-color, $direction: 135deg) {
+    background: linear-gradient($direction, $start-color 0%, $end-color 100%);
+}
+
+// Mixin pour le responsive
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == tablet {
+        @media (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @if $breakpoint == desktop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
+// Mixin pour centrer du contenu
+@mixin center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

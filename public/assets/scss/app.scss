@@ -1,0 +1,30 @@
+// ==========================================================================
+// ARCHITECTURE SASS 7-1 - TUTO DOCKER
+// ==========================================================================
+
+// 1. ABSTRACTS - Variables, fonctions, mixins
+@import "abstracts/variables";
+@import "abstracts/config";
+@import "abstracts/mixins";
+
+// 2. VENDORS - Framework externes (Bootstrap)
+@import "vendors/bootstrap";
+
+// 3. BASE - Reset, typographie, helpers
+@import "base/base";
+@import "base/utilities";
+
+// 4. LAYOUT - Header, footer, navigation
+@import "layout/header";
+@import "layout/footer";
+
+// 5. COMPONENTS - Boutons, cards, etc.
+@import "components/buttons";
+@import "components/cards";
+
+// 6. PAGES - Styles spécifiques aux pages
+@import "pages/home";
+@import "pages/courses";
+
+// 7. THEMES (si nécessaire)
+// @import 'themes/theme';

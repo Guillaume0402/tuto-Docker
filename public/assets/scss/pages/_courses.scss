@@ -1,0 +1,334 @@
+// ==========================================================================
+// PAGE COURS
+// ==========================================================================
+
+.courses-header {
+    background: linear-gradient(135deg, $light-color 0%, white 100%);
+    padding: 2rem 0;
+    border-bottom: 1px solid $border-color;
+
+    h1 {
+        color: $dark-color;
+        margin-bottom: 0.5rem;
+    }
+
+    .courses-subtitle {
+        color: $text-muted;
+        font-size: 1.1rem;
+    }
+}
+
+.courses-grid {
+    padding: 3rem 0;
+
+    .course-card {
+        margin-bottom: 2rem;
+        height: 100%;
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: $font-weight-semibold;
+            margin-bottom: 0.75rem;
+            color: $dark-color;
+        }
+
+        .card-text {
+            flex-grow: 1;
+            color: $text-muted;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta {
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid $border-color;
+        }
+    }
+}
+
+.course-filters {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+    margin-bottom: 2rem;
+
+    .filter-group {
+        margin-bottom: 1rem;
+
+        label {
+            font-weight: $font-weight-medium;
+            color: $dark-color;
+            margin-bottom: 0.5rem;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            @include transition(border-color);
+
+            &:focus {
+                outline: none;
+                border-color: $primary-color;
+                box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+            }
+        }
+    }
+}
+
+// ==========================================================================
+// PAGE DÉTAIL COURS
+// ==========================================================================
+
+.course-detail-header {
+    background: white;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    margin-bottom: 2rem;
+
+    .course-image-container {
+        position: relative;
+        height: 300px;
+        overflow: hidden;
+
+        .course-image,
+        .course-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+    }
+
+    .course-info {
+        padding: 2rem;
+
+        .course-title {
+            font-size: 2rem;
+            font-weight: $font-weight-bold;
+            color: $dark-color;
+            margin-bottom: 1rem;
+        }
+
+        .course-description {
+            font-size: 1.1rem;
+            color: $text-muted;
+            line-height: $line-height-lg;
+            margin-bottom: 2rem;
+        }
+
+        .course-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            background-color: $light-color;
+            border-radius: $border-radius;
+            padding: 1.5rem;
+
+            .stat-item {
+                .stat-value {
+                    font-size: 1.5rem;
+                    font-weight: $font-weight-bold;
+                    color: $primary-color;
+                    display: block;
+                }
+
+                .stat-label {
+                    font-size: $font-size-sm;
+                    color: $text-muted;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+.course-content {
+    .content-section {
+        background: white;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow-sm;
+        margin-bottom: 2rem;
+        overflow: hidden;
+
+        .section-header {
+            background: linear-gradient(
+                135deg,
+                $primary-color 0%,
+                darken($primary-color, 10%) 100%
+            );
+            color: white;
+            padding: 1rem 1.5rem;
+            font-weight: $font-weight-semibold;
+            font-size: 1.1rem;
+
+            i {
+                margin-right: 0.5rem;
+            }
+        }
+
+        .section-body {
+            padding: 1.5rem;
+        }
+    }
+}
+
+.chapters-accordion {
+    .accordion-item {
+        border: none;
+        border-bottom: 1px solid $border-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            .accordion-button {
+                background-color: white;
+                border: none;
+                padding: 1.5rem;
+                font-weight: $font-weight-medium;
+                @include transition(all);
+
+                &:hover {
+                    background-color: $light-color;
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+                }
+
+                &:not(.collapsed) {
+                    background-color: $primary-color;
+                    color: white;
+                }
+            }
+        }
+
+        .accordion-body {
+            padding: 1.5rem;
+            background-color: $light-color;
+            border-top: 1px solid $border-color;
+        }
+    }
+}
+
+.course-sidebar {
+    .sidebar-card {
+        @extend .card-custom;
+        margin-bottom: 2rem;
+
+        .enrollment-section {
+            text-align: center;
+            padding: 2rem;
+
+            .enrollment-title {
+                font-size: 1.5rem;
+                font-weight: $font-weight-bold;
+                color: $success-color;
+                margin-bottom: 1rem;
+            }
+
+            .enrollment-button {
+                width: 100%;
+                padding: 1rem;
+                font-size: 1.1rem;
+                font-weight: $font-weight-medium;
+                margin-bottom: 1rem;
+            }
+
+            .enrollment-info {
+                font-size: $font-size-sm;
+                color: $text-muted;
+            }
+        }
+
+        .progress-section {
+            .progress {
+                height: 8px;
+                background-color: $light-color;
+                border-radius: 4px;
+                overflow: hidden;
+                margin-bottom: 0.5rem;
+
+                .progress-bar {
+                    background: linear-gradient(
+                        90deg,
+                        $success-color 0%,
+                        $info-color 100%
+                    );
+                    @include transition(width);
+                }
+            }
+        }
+    }
+
+    .instructor-card {
+        @extend .card-custom;
+
+        .instructor-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            background: linear-gradient(
+                135deg,
+                $primary-color 0%,
+                $info-color 100%
+            );
+            @include center-content;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .instructor-name {
+            font-weight: $font-weight-semibold;
+            color: $dark-color;
+            margin-bottom: 0.5rem;
+        }
+
+        .instructor-title {
+            color: $text-muted;
+            font-size: $font-size-sm;
+            margin-bottom: 1rem;
+        }
+
+        .instructor-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid $border-color;
+
+            .stat-item {
+                .stat-value {
+                    font-weight: $font-weight-bold;
+                    color: $primary-color;
+                    display: block;
+                }
+
+                .stat-label {
+                    font-size: $font-size-sm;
+                    color: $text-muted;
+                }
+            }
+        }
+    }
+}

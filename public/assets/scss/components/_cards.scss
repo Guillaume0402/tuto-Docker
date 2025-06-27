@@ -1,0 +1,135 @@
+// ==========================================================================
+// CARDS
+// ==========================================================================
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: white;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: $border-radius;
+    @include transition(all);
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $box-shadow;
+    }
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.card-header {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    border-top-left-radius: calc($border-radius - 1px);
+    border-top-right-radius: calc($border-radius - 1px);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-bottom: 0;
+    }
+}
+
+.card-footer {
+    padding: 0.75rem 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-bottom-left-radius: calc($border-radius - 1px);
+    border-bottom-right-radius: calc($border-radius - 1px);
+}
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc($border-radius - 1px);
+    border-top-right-radius: calc($border-radius - 1px);
+}
+
+// Card personnalisée
+.card-custom {
+    @include card-custom();
+    background: white;
+
+    .card-header {
+        background: linear-gradient(
+            135deg,
+            $primary-color 0%,
+            darken($primary-color, 10%) 100%
+        );
+        color: white;
+        font-weight: $font-weight-semibold;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: white;
+        }
+    }
+}
+
+// Card Docker
+.card-docker {
+    @extend .card-custom;
+    border-left: 4px solid $docker-blue;
+
+    .card-header {
+        background: linear-gradient(
+            135deg,
+            $docker-blue 0%,
+            darken($docker-blue, 10%) 100%
+        );
+    }
+}
+
+// Card de cours
+.course-card {
+    @extend .card-custom;
+    overflow: hidden;
+
+    .course-image {
+        height: 200px;
+        object-fit: cover;
+        @include transition(transform);
+    }
+
+    &:hover .course-image {
+        transform: scale(1.05);
+    }
+
+    .course-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+    }
+
+    .course-stats {
+        font-size: $font-size-sm;
+        color: $text-muted;
+
+        .stat-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 1rem;
+
+            i {
+                margin-right: 0.25rem;
+            }
+        }
+    }
+}
