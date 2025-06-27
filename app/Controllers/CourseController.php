@@ -32,13 +32,10 @@ class CourseController extends Controller
             exit;
         }
 
-        // Charger le contenu réel du module
-        $moduleContent = $courseModel->getModuleContent($id);
-
         $data = [
             'title' => $course['title'] . ' - Tuto Docker',
             'course' => $course,
-            'moduleContent' => $moduleContent
+            'courseModel' => $courseModel
         ];
 
         $this->view('course-detail', $data);

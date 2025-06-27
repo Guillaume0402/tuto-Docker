@@ -75,23 +75,26 @@
                     </h3>
                 </div>
                 <div class="card-body">
-                    <!-- Contenu simple et statique -->
-                    <?php if ($course['id'] == 1): ?>
-                        <h4>Ce que vous allez apprendre</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Comprendre ce qu'est Docker et la conteneurisation</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Différencier conteneurs et machines virtuelles</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Installer Docker sur votre système</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Créer et gérer vos premiers conteneurs</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Utiliser les commandes Docker essentielles</li>
-                        </ul>
-
-                        <h4 class="mt-4">Prérequis</h4>
-                        <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-circle text-muted me-2" style="font-size: 0.5rem;"></i>Connaissances de base en ligne de commande</li>
-                            <li class="mb-2"><i class="fas fa-circle text-muted me-2" style="font-size: 0.5rem;"></i>Aucune expérience Docker requise</li>
-                        </ul>
+                    <?php if (isset($moduleContent['readme']) && $moduleContent['readme']): ?>
+                        <!-- Contenu du README -->
+                        <div class="module-content">
+                            <?php
+                            // Chercher les objectifs pédagogiques dans les chapitres
+                            $objectivesFound = false;
+                            if (isset($moduleContent['chapters'])) {
+                                foreach ($moduleContent['chapters'] as $chapter) {
+                                    if (strpos($chapter['title'], 'Objectifs pédagogiques') !== false) {
+                                        echo "<h4>Objectifs pédagogiques</h4>";
+                                        echo "<div class='objectives'>" . nl2br(htmlspecialchars($chapter['content'])) . "</div>";
+                                        $objectivesFound = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
                     <?php else: ?>
+                        <!-- Contenu par défaut -->
                         <h4>Ce que vous allez apprendre</h4>
                         <ul class="list-unstyled">
                             <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Les concepts fondamentaux de Docker et de la conteneurisation</li>
@@ -122,42 +125,49 @@
                 <div class="card-body p-0">
                     <div class="accordion" id="chaptersAccordion">
                         <?php
-                        // Chapitres statiques classiques selon le cours
-                        if ($course['id'] == 1) {
-                            $chapters = [
-                                ['id' => 1, 'title' => '🧱 Introduction à Docker', 'description' => 'Qu\'est-ce que Docker ? Pourquoi l\'utiliser ?', 'duration' => '45 min', 'content' => 'Découvrez Docker et ses avantages par rapport aux approches traditionnelles.'],
-                                ['id' => 2, 'title' => '📊 Conteneurs vs Machines Virtuelles', 'description' => 'Comprenez la différence fondamentale', 'duration' => '30 min', 'content' => 'Comparaison détaillée entre conteneurs et machines virtuelles.'],
-                                ['id' => 3, 'title' => '🧰 Concepts fondamentaux', 'description' => 'Images, conteneurs, registres', 'duration' => '60 min', 'content' => 'Maîtrisez les concepts clés de l\'écosystème Docker.'],
-                                ['id' => 4, 'title' => '� Installation de Docker', 'description' => 'Installez Docker sur votre système', 'duration' => '45 min', 'content' => 'Guide d\'installation pas à pas pour Windows, Mac et Linux.'],
-                                ['id' => 5, 'title' => '� Premier conteneur Hello World', 'description' => 'Votre premier conteneur en action', 'duration' => '30 min', 'content' => 'Créez et exécutez votre premier conteneur Docker.']
+                        // Utiliser les chapitres du module si disponibles, sinon utiliser les chapitres statiques
+                        $chaptersToShow = isset($moduleContent['chapters']) && !empty($moduleContent['chapters'])
+                            ? $moduleContent['chapters']
+                            : [
+                                ['id' => 1, 'title' => '🧱 Introduction à Docker', 'description' => 'Qu\'est-ce que Docker ? Pourquoi l\'utiliser ?', 'duration' => '45 min'],
+                                ['id' => 2, 'title' => '🧰 Commandes de base Docker', 'description' => 'Maîtrisez les commandes essentielles', 'duration' => '60 min'],
+                                ['id' => 3, 'title' => '🌍 Projet statique avec NGINX', 'description' => 'Serveur web avec Docker', 'duration' => '75 min'],
+                                ['id' => 4, 'title' => '🐘 PHP Vanilla avec Docker', 'description' => 'Développement PHP containerisé', 'duration' => '90 min'],
+                                ['id' => 5, 'title' => '🛢️ MySQL + PHP via docker-compose', 'description' => 'Base de données et orchestration', 'duration' => '120 min']
                             ];
-                        } else {
-                            // Chapitres par défaut pour les autres cours
-                            $chapters = [
-                                ['id' => 1, 'title' => '🧱 Introduction', 'description' => 'Découvrez les bases', 'duration' => '45 min', 'content' => 'Introduction aux concepts de base.'],
-                                ['id' => 2, 'title' => '🧰 Pratique', 'description' => 'Exercices pratiques', 'duration' => '60 min', 'content' => 'Mettez en pratique vos connaissances.'],
-                                ['id' => 3, 'title' => '🚀 Projet final', 'description' => 'Réalisez un projet complet', 'duration' => '90 min', 'content' => 'Projet complet pour valider vos acquis.']
-                            ];
-                        }
 
-                        foreach ($chapters as $index => $chapter): ?>
+                        foreach ($chaptersToShow as $index => $chapter):
+                            $chapterId = $chapter['id'] ?? $index; ?>
                             <div class="accordion-item">
-                                <h2 class="accordion-header" id="chapter<?= $chapter['id'] ?>">
-                                    <button class="accordion-button <?= $index !== 0 ? 'collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $chapter['id'] ?>" aria-expanded="<?= $index === 0 ? 'true' : 'false' ?>">>
+                                <h2 class="accordion-header" id="chapter<?= $chapterId ?>">
+                                    <button class="accordion-button <?= $index !== 0 ? 'collapsed' : '' ?>" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $chapterId ?>" aria-expanded="<?= $index === 0 ? 'true' : 'false' ?>">
                                         <div class="d-flex justify-content-between align-items-center w-100 me-3">
                                             <div>
                                                 <strong><?= htmlspecialchars($chapter['title']) ?></strong>
-                                                <div class="text-muted small"><?= htmlspecialchars($chapter['description']) ?></div>
+                                                <div class="text-muted small"><?= htmlspecialchars($chapter['description'] ?? '') ?></div>
                                             </div>
                                             <div class="text-end">
-                                                <span class="badge bg-secondary"><?= $chapter['duration'] ?></span>
+                                                <span class="badge bg-secondary"><?= $chapter['duration'] ?? '45 min' ?></span>
+                                                <?php if ($chapter['completed'] ?? false): ?>
+                                                    <i class="fas fa-check-circle text-success ms-2"></i>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </button>
                                 </h2>
-                                <div id="collapse<?= $chapter['id'] ?>" class="accordion-collapse collapse <?= $index === 0 ? 'show' : '' ?>" data-bs-parent="#chaptersAccordion">
+                                <div id="collapse<?= $chapterId ?>" class="accordion-collapse collapse <?= $index === 0 ? 'show' : '' ?>" data-bs-parent="#chaptersAccordion">
                                     <div class="accordion-body">
-                                        <p><?= htmlspecialchars($chapter['content']) ?></p>
+                                        <?php if (isset($chapter['content']) && !empty($chapter['content'])): ?>
+                                            <!-- Contenu réel du chapitre -->
+                                            <div class="chapter-content">
+                                                <?= nl2br(htmlspecialchars(substr($chapter['content'], 0, 500))) ?>
+                                                <?php if (strlen($chapter['content']) > 500): ?>
+                                                    <span class="text-muted">... (contenu complet disponible dans le cours)</span>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php else: ?>
+                                            <p class="text-muted">Contenu du chapitre à venir...</p>
+                                        <?php endif; ?>
 
                                         <?php if ($isEnrolled): ?>
                                             <div class="mt-3">
