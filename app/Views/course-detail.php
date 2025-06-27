@@ -175,7 +175,7 @@
         <!-- Sidebar -->
         <div class="col-lg-4">
             <!-- Formation gratuite et inscription -->
-            <div class="card card-custom mb-4 position-sticky" style="top: 20px;">
+            <div class="card card-custom mb-4">
                 <div class="card-body text-center">
                     <div class="mb-3">
                         <span class="h2 text-success fw-bold">
