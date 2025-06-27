@@ -204,4 +204,133 @@ class Course
 
         return $classes[$level] ?? 'bg-secondary';
     }
+
+    /**
+     * Récupère le contenu réel d'un module depuis les fichiers
+     */
+    public function getModuleContent($courseId)
+    {
+        $moduleDir = "content/modules/module-" . str_pad($courseId, 2, '0', STR_PAD_LEFT);
+        $basePath = dirname(dirname(__DIR__)) . "/" . $moduleDir;
+
+        $content = [];
+
+        // Charger README.md
+        $readmePath = $basePath . "/README.md";
+        if (file_exists($readmePath)) {
+            $content['readme'] = file_get_contents($readmePath);
+            $content['chapters'] = $this->extractChaptersFromReadme($content['readme']);
+        }
+
+        // Charger TP.md
+        $tpPath = $basePath . "/TP.md";
+        if (file_exists($tpPath)) {
+            $content['tp'] = file_get_contents($tpPath);
+        }
+
+        // Charger QUIZ.md
+        $quizPath = $basePath . "/QUIZ.md";
+        if (file_exists($quizPath)) {
+            $content['quiz'] = file_get_contents($quizPath);
+        }
+
+        // Charger RESOURCES.md
+        $resourcesPath = $basePath . "/RESOURCES.md";
+        if (file_exists($resourcesPath)) {
+            $content['resources'] = file_get_contents($resourcesPath);
+        }
+
+        return $content;
+    }
+
+    /**
+     * Extrait les chapitres du contenu README
+     */
+    private function extractChaptersFromReadme($readmeContent)
+    {
+        $chapters = [];
+
+        if (empty($readmeContent)) {
+            return $chapters;
+        }
+
+        // Diviser le contenu en lignes
+        $lines = explode("\n", $readmeContent);
+        $currentChapter = null;
+        $currentContent = '';
+
+        foreach ($lines as $line) {
+            // Détecter les titres de niveau 2 (##)
+            if (preg_match('/^##\s+(.+)/', $line, $matches)) {
+                // Sauvegarder le chapitre précédent s'il existe
+                if ($currentChapter !== null) {
+                    $chapters[] = [
+                        'title' => $currentChapter,
+                        'content' => trim($currentContent)
+                    ];
+                }
+
+                // Commencer un nouveau chapitre
+                $currentChapter = $matches[1];
+                $currentContent = '';
+            } else {
+                // Ajouter le contenu au chapitre actuel
+                if ($currentChapter !== null) {
+                    $currentContent .= $line . "\n";
+                }
+            }
+        }
+
+        // Sauvegarder le dernier chapitre
+        if ($currentChapter !== null) {
+            $chapters[] = [
+                'title' => $currentChapter,
+                'content' => trim($currentContent)
+            ];
+        }
+
+        return $chapters;
+    }
+
+    /**
+     * Vérifie si un utilisateur est inscrit à un cours
+     */
+    public function isUserEnrolled($userId, $courseId)
+    {
+        if ($this->db === null) {
+            // Sans base de données, on simule qu'il n'est pas inscrit
+            return false;
+        }
+
+        $query = "SELECT COUNT(*) FROM enrollments WHERE user_id = :user_id AND course_id = :course_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':course_id', $courseId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchColumn() > 0;
+    }
+
+    /**
+     * Inscrit un utilisateur à un cours
+     */
+    public function enrollUser($userId, $courseId)
+    {
+        if ($this->db === null) {
+            // Sans base de données, on simule une inscription réussie
+            return true;
+        }
+
+        // Vérifier si déjà inscrit
+        if ($this->isUserEnrolled($userId, $courseId)) {
+            return false;
+        }
+
+        $query = "INSERT INTO enrollments (user_id, course_id, enrolled_at) VALUES (:user_id, :course_id, NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':course_id', $courseId, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
 }
