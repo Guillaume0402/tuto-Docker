@@ -11,7 +11,19 @@
                 <?php if ($course['image_url']): ?>
                     <img src="<?= htmlspecialchars($course['image_url']) ?>" class="card-img-top" alt="<?= htmlspecialchars($course['title']) ?>" style="height: 300px; object-fit: cover;">
                 <?php else: ?>
-                    <div class="card-img-top bg-gradient d-flex align-items-center justify-content-center" style="height: 300px; background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);">
+                    <?php                    // Définir les classes CSS pour les dégradés en fonction de l'ID du module
+                    $gradientClass = '';
+                    $moduleId = $course['id'];
+
+                    if ($moduleId >= 1 && $moduleId <= 4) {
+                        $gradientClass = 'module-gradient-beginner';
+                    } elseif ($moduleId >= 5 && $moduleId <= 10) {
+                        $gradientClass = 'module-gradient-intermediate';
+                    } else {
+                        $gradientClass = 'module-gradient-advanced';
+                    }
+                    ?>
+                    <div class="card-img-top <?= $gradientClass ?> d-flex align-items-center justify-content-center" style="height: 300px;">
                         <i class="fab fa-docker fa-5x text-white opacity-75"></i>
                     </div>
                 <?php endif; ?>
@@ -243,44 +255,6 @@
                                 <i class="fas fa-heart me-1"></i>
                                 Favoris
                             </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Instructeur -->
-            <div class="card card-custom mb-4">
-                <div class="card-header">
-                    <h5 class="mb-0">
-                        <i class="fas fa-user-tie me-2"></i>
-                        Votre instructeur
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
-                            <i class="fas fa-user fa-2x text-white"></i>
-                        </div>
-                        <div>
-                            <h6 class="mb-0"><?= htmlspecialchars($course['instructor_full_name'] ?? 'Formation Docker') ?></h6>
-                            <small class="text-muted">Expert Docker & DevOps</small>
-                        </div>
-                    </div>
-                    <p class="text-muted small">
-                        Développeur Senior avec plus de 10 ans d'expérience dans le domaine DevOps et la conteneurisation.
-                    </p>
-                    <div class="row text-center">
-                        <div class="col-4">
-                            <div class="fw-bold">25+</div>
-                            <small class="text-muted">Cours</small>
-                        </div>
-                        <div class="col-4">
-                            <div class="fw-bold">5000+</div>
-                            <small class="text-muted">Étudiants</small>
-                        </div>
-                        <div class="col-4">
-                            <div class="fw-bold">4.8★</div>
-                            <small class="text-muted">Note</small>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,199 @@
+// ==========================================================================
+// DÉGRADÉS MODERNES POUR LES MODULES - 3 NIVEAUX SEULEMENT
+// ==========================================================================
+
+// Base commune pour tous les modules
+.module-gradient {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    // Effet de particules subtil
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+                circle at 20% 80%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            );
+        z-index: 1;
+    }
+
+    // Contenu au-dessus de l'effet
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// NIVEAU DÉBUTANT - Dégradé bleu/cyan
+.module-gradient-beginner {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) !important;
+
+    // Effet de particules subtil
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+                circle at 20% 80%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            );
+        z-index: 1;
+    }
+
+    // Contenu au-dessus de l'effet
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// NIVEAU INTERMÉDIAIRE - Dégradé orange/rose
+.module-gradient-intermediate {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%) !important;
+
+    // Effet de particules subtil
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+                circle at 20% 80%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            );
+        z-index: 1;
+    }
+
+    // Contenu au-dessus de l'effet
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// NIVEAU AVANCÉ - Dégradé violet/magenta
+.module-gradient-advanced {
+    position: relative;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+
+    // Effet de particules subtil
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+                circle at 20% 80%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(255, 255, 255, 0.1) 0%,
+                transparent 50%
+            );
+        z-index: 1;
+    }
+
+    // Contenu au-dessus de l'effet
+    > * {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// Styles génériques pour tous les modules
+.module-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 3;
+
+    .badge {
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 1rem;
+        backdrop-filter: blur(10px);
+    }
+}
+
+.module-icon {
+    font-size: 4rem;
+    color: white;
+    opacity: 0.8;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+// Effet hover pour les modules
+.course-card:hover .module-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .module-gradient,
+    .module-gradient-beginner,
+    .module-gradient-intermediate,
+    .module-gradient-advanced {
+        height: 150px;
+    }
+
+    .module-icon {
+        font-size: 3rem;
+    }
+}

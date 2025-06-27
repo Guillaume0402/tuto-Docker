@@ -4,8 +4,8 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courseModel = new Course();
-        $courses = $courseModel->findAll();
+        // Utiliser les données statiques définies dans la vue avec les bons instructeurs
+        $courses = null; // Forcer l'utilisation des données statiques de la vue
 
         $data = [
             'title' => 'Nos Cours - Tuto Docker',

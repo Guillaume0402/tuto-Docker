@@ -346,12 +346,24 @@
                 <div class="card course-card h-100 <?= $course['level'] === 'débutant' ? 'border-info' : ($course['level'] === 'intermédiaire' ? 'border-warning' : 'border-danger') ?>">
                     <?php if ($course['image_url']): ?>
                         <img src="<?= htmlspecialchars($course['image_url']) ?>" class="card-img-top course-image" alt="<?= htmlspecialchars($course['title']) ?>">
-                    <?php else: ?>
-                        <div class="card-img-top course-image d-flex align-items-center justify-content-center position-relative" style="height: 200px; background: linear-gradient(135deg, 
-                            <?= $course['level'] === 'débutant' ? '#17a2b8, #138496' : ($course['level'] === 'intermédiaire' ? '#ffc107, #e0a800' : '#dc3545, #c82333') ?>);">
-                            <i class="fab fa-docker fa-4x text-white opacity-75"></i>
-                            <div class="position-absolute top-0 start-0 m-2">
-                                <span class="badge bg-dark fs-6">Module <?= $course['id'] ?></span>
+                    <?php else: ?> <?php
+                                    // Définir les classes CSS pour les dégradés en fonction de l'ID du module
+                                    $gradientClass = '';
+                                    $moduleId = $course['id'];
+
+                                    if ($moduleId >= 1 && $moduleId <= 4) {
+                                        $gradientClass = 'module-gradient-beginner';
+                                    } elseif ($moduleId >= 5 && $moduleId <= 10) {
+                                        $gradientClass = 'module-gradient-intermediate';
+                                    } else {
+                                        $gradientClass = 'module-gradient-advanced';
+                                    }                        // Debug: affichons le niveau et la classe
+                                    // echo "<!-- Module {$moduleId}: Niveau par ID = '$gradientClass' -->";
+                                    ?>
+                        <div class="card-img-top course-image <?= $gradientClass ?> d-flex align-items-center justify-content-center position-relative">
+                            <i class="fab fa-docker module-icon"></i>
+                            <div class="module-badge">
+                                <span class="badge">Module <?= $course['id'] ?></span>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -393,17 +405,6 @@
                         <?php endif; ?>
 
                         <div class="mt-auto">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-muted">
-                                    <i class="fas fa-chalkboard-teacher me-1"></i>
-                                    <?= htmlspecialchars($course['instructor_full_name']) ?>
-                                </small>
-                                <small class="text-muted">
-                                    <i class="fas fa-users me-1"></i>
-                                    <?= $course['enrolled_count'] ?> inscrits
-                                </small>
-                            </div>
-
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="fw-bold text-success fs-5">
                                     <i class="fas fa-heart me-1"></i>GRATUIT
