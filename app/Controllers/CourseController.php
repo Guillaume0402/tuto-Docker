@@ -17,6 +17,13 @@ class CourseController extends Controller
 
     public function show($id)
     {
+        // Vérifier si l'utilisateur est connecté
+        if (!Session::get('user_id')) {
+            Session::setFlash('info', 'Vous devez être connecté pour accéder au contenu des cours');
+            header('Location: /login');
+            exit;
+        }
+
         $courseModel = new Course();
         $course = $courseModel->find($id);
 
