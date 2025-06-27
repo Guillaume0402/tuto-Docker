@@ -82,6 +82,3 @@
         </div>
     </div>
 </footer>
-
-<!-- Font Awesome pour les icônes -->
-<script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script>
