@@ -1,6 +1,6 @@
 # 🤝 Guide de Contribution
 
-Merci de contribuer à la **Formation Docker 100% Gratuite** ! 
+Merci de contribuer à la **Formation Docker 100% Gratuite** !
 
 ## 🎯 Types de contributions
 
@@ -12,6 +12,7 @@ Merci de contribuer à la **Formation Docker 100% Gratuite** !
 ## 🚀 Contribution rapide
 
 ### 1. Fork et setup
+
 ```bash
 git clone https://github.com/votre-username/tuto-docker.git
 cd tuto-docker
@@ -20,6 +21,7 @@ make install
 ```
 
 ### 2. Développer
+
 ```bash
 git checkout -b feature/votre-contribution
 # Faire vos modifications
@@ -28,26 +30,32 @@ git push origin feature/votre-contribution
 ```
 
 ### 3. Pull Request
+
 Créez une PR avec une description claire de vos changements.
 
 ## 📝 Standards
 
 ### Code PHP
-- Indentation : 4 espaces
-- Classes : `PascalCase`
-- Méthodes : `camelCase`
+
+-   Indentation : 4 espaces
+-   Classes : `PascalCase`
+-   Méthodes : `camelCase`
 
 ### Commits
+
 Format : `type: description`
-- `feat:` nouvelle fonctionnalité
-- `fix:` correction de bug  
-- `docs:` documentation
-- `style:` mise en forme
+
+-   `feat:` nouvelle fonctionnalité
+-   `fix:` correction de bug
+-   `docs:` documentation
+-   `style:` mise en forme
 
 Exemple : `feat: ajouter module Docker Compose`
 
 ### Modules de formation
+
 Structure requise :
+
 ```
 content/modules/module-XX/
 ├── README.md      # Contenu théorique
@@ -59,16 +67,16 @@ content/modules/module-XX/
 
 ## ✅ Checklist avant PR
 
-- [ ] Code testé avec `make test`
-- [ ] Documentation mise à jour
-- [ ] Pas de secrets dans le code
-- [ ] Responsive design vérifié
+-   [ ] Code testé avec `make test`
+-   [ ] Documentation mise à jour
+-   [ ] Pas de secrets dans le code
+-   [ ] Responsive design vérifié
 
 ## 💬 Support
 
-- **Issues GitHub** pour les bugs et suggestions
-- **Discussions** pour les questions générales
-- **Wiki** pour la documentation avancée
+-   **Issues GitHub** pour les bugs et suggestions
+-   **Discussions** pour les questions générales
+-   **Wiki** pour la documentation avancée
 
 ---
 

@@ -77,7 +77,11 @@ Cette plateforme vous permettra d'apprendre Docker de manière progressive à tr
 
 ### **Frontend**
 
--   **Bootstrap 5** - Framework CSS moderne et responsive
+-   **Bootstrap 5.3.3** - Framework CSS moderne et responsive
+    -   🎨 **Installation locale** (autonomie complète, pas de CDN)
+    -   ⚡ **Performance optimisée** avec compilation SCSS
+    -   🔧 **Variables personnalisées** Docker (couleurs #2496ED, #059669)
+    -   🛠️ **Scripts npm** : `npm run build-css`, `npm run dev`
 -   **SCSS** - Préprocesseur CSS avec compilation automatique
 -   **JavaScript ES6+** - Interactions dynamiques et AJAX
 -   **Font Awesome** - Icônes et symboles
@@ -126,6 +130,28 @@ docker-compose up -d
 | **Site web**   | http://localhost:8080 | -           | -               |
 | **phpMyAdmin** | http://localhost:8081 | `root`      | `root_password` |
 | **Mailhog**    | http://localhost:8025 | -           | -               |
+
+### 🎨 Développement Frontend (optionnel)
+
+Pour personnaliser les styles Bootstrap :
+
+```bash
+# Installer les dépendances npm
+npm install
+
+# Développement avec compilation automatique
+npm run dev
+
+# Build de production
+npm run build-css
+```
+
+**Avantages de l'installation locale :**
+
+-   🌐 **Autonomie** : Fonctionne sans internet
+-   ⚡ **Performance** : Pas de requête CDN externe
+-   🎨 **Personnalisation** : Variables SCSS modifiables
+-   🔒 **Sécurité** : Pas de dépendance externe
 
 ## 📁 Architecture du projet
 
