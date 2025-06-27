@@ -50,15 +50,15 @@
                 <ul class="list-unstyled">
                     <li class="mb-2">
                         <i class="fas fa-envelope me-2"></i>
-                        contact@tuto-docker.com
+                        g.maignaut@gmail.com
                     </li>
                     <li class="mb-2">
                         <i class="fas fa-phone me-2"></i>
-                        +33 1 23 45 67 89
+                        +33 6 50 42 80 39
                     </li>
                     <li class="mb-2">
                         <i class="fas fa-map-marker-alt me-2"></i>
-                        Paris, France
+                        Fleurance, France
                     </li>
                 </ul>
             </div>

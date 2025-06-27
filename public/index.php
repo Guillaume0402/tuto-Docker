@@ -4,12 +4,6 @@
 // Inclusion des fichiers de configuration
 require_once '../config/config.php';
 
-// Démarrage de la session
-Session::start();
-
-// Démarrage de la session
-Session::start();
-
 // Récupération de l'URL demandée
 $requestUri = $_SERVER['REQUEST_URI'];
 $scriptName = $_SERVER['SCRIPT_NAME'];

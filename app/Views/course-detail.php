@@ -124,7 +124,7 @@
                             <div class="border-end">
                                 <div class="h4 text-success mb-0">
                                     <i class="fas fa-users me-1"></i>
-                                    <?= $course['enrolled_count'] ?>
+                                    <?= $course['enrolled_count'] ?? 0 ?>
                                 </div>
                                 <small class="text-muted">Étudiants</small>
                             </div>

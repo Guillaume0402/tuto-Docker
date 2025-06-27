@@ -70,11 +70,11 @@ class Router
 
     private function matchRoute($pattern, $uri)
     {
-        // Échapper les caractères spéciaux dans le pattern
-        $pattern = str_replace('/', '\/', $pattern);
+        // D'abord remplacer les paramètres par des regex
+        $pattern = preg_replace('/\{([a-zA-Z]+)\}/', '([a-zA-Z0-9-_]+)', $pattern);
 
-        // Remplacer les paramètres par des regex
-        $pattern = preg_replace('/\\\{([a-zA-Z]+)\\\}/', '([a-zA-Z0-9-_]+)', $pattern);
+        // Puis échapper les caractères spéciaux pour regex
+        $pattern = str_replace('/', '\/', $pattern);
 
         // Créer la regex complète
         $regex = '/^' . $pattern . '$/';
