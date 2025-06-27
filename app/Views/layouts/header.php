@@ -45,9 +45,6 @@
                                 <li><a class="dropdown-item" href="<?= url('/dashboard') ?>">
                                         <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                                     </a></li>
-                                <li><a class="dropdown-item" href="<?= url('/profil') ?>">
-                                        <i class="fas fa-user-edit me-2"></i>Mon Profil
-                                    </a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
