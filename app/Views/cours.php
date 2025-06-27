@@ -385,8 +385,9 @@
                         </div>
 
                         <h5 class="card-title fw-bold"><?= htmlspecialchars($course['title']) ?></h5>
-                        <p class="card-text text-muted small"><?= htmlspecialchars($course['description']) ?></p>
+                        <p class="card-text text-muted small flex-grow-1"><?= htmlspecialchars($course['description']) ?></p>
 
+                        <!-- Prérequis toujours avant les boutons -->
                         <?php if ($course['id'] <= 4): ?>
                             <div class="alert alert-info small mb-3">
                                 <i class="fas fa-info-circle me-1"></i>
@@ -404,26 +405,23 @@
                             </div>
                         <?php endif; ?>
 
-                        <div class="mt-auto">
-                            <div class="d-flex justify-content-end align-items-center">
-                                <div class="btn-group">
-                                    <a href="<?= url('/cours/' . $course['id']) ?>" class="btn btn-outline-primary btn-sm">
-                                        <i class="fas fa-eye me-1"></i>Détails
-                                    </a>
-                                    <?php if (is_logged_in()): ?>
-                                        <form method="POST" action="<?= url('/cours/' . $course['id'] . '/enroll') ?>" class="d-inline">
-                                            <?= csrf_field() ?>
-                                            <button type="submit" class="btn btn-primary btn-sm">
-                                                <i class="fas fa-play me-1"></i>Commencer
-                                            </button>
-                                        </form>
-                                    <?php else: ?>
-                                        <a href="<?= url('/login') ?>" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-sign-in-alt me-1"></i>Se connecter
-                                        </a>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
+                        <!-- Boutons séparés de chaque côté -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="<?= url('/cours/' . $course['id']) ?>" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye me-1"></i>Détails
+                            </a>
+                            <?php if (is_logged_in()): ?>
+                                <form method="POST" action="<?= url('/cours/' . $course['id'] . '/enroll') ?>" class="d-inline">
+                                    <?= csrf_field() ?>
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-play me-1"></i>Commencer
+                                    </button>
+                                </form>
+                            <?php else: ?>
+                                <a href="<?= url('/login') ?>" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-sign-in-alt me-1"></i>Se connecter
+                                </a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

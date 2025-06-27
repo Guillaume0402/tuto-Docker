@@ -184,6 +184,19 @@
     transform: scale(1.1);
 }
 
+// Uniformisation des cards
+.course-card {
+    height: 100%;
+
+    .card-body {
+        min-height: 400px; // Hauteur minimale pour uniformiser
+
+        .flex-grow-1 {
+            flex-grow: 1; // La description prend l'espace disponible
+        }
+    }
+}
+
 // Responsive
 @media (max-width: 768px) {
     .module-gradient,
@@ -195,5 +208,9 @@
 
     .module-icon {
         font-size: 3rem;
+    }
+
+    .course-card .card-body {
+        min-height: 350px; // Hauteur réduite sur mobile
     }
 }
