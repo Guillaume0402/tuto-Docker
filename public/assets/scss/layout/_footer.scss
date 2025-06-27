@@ -2,14 +2,23 @@
 // FOOTER
 // ==========================================================================
 
-.footer {
-    background-color: $dark-color;
-    color: rgba(255, 255, 255, 0.8);
+.footer,
+.footer-custom {
+    background-color: $dark-color !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     padding: 3rem 0 1rem;
     margin-top: auto;
 
-    h5 {
-        color: white;
+    h5,
+    .h5 {
+        color: white !important;
+        font-weight: $font-weight-semibold;
+        margin-bottom: 1rem;
+    }
+
+    h6,
+    .h6 {
+        color: rgba(255, 255, 255, 0.9) !important;
         font-weight: $font-weight-semibold;
         margin-bottom: 1rem;
     }
@@ -17,17 +26,57 @@
     p {
         margin-bottom: 0.5rem;
         line-height: $line-height-lg;
+        color: rgba(255, 255, 255, 0.8) !important;
     }
 
     a {
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(255, 255, 255, 0.7) !important;
         text-decoration: none;
         @include transition(color);
 
         &:hover {
-            color: white;
+            color: white !important;
             text-decoration: underline;
         }
+    }
+
+    // Styles spécifiques pour les liens avec classe text-light
+    .text-light {
+        color: rgba(255, 255, 255, 0.7) !important;
+
+        &:hover {
+            color: white !important;
+        }
+    }
+
+    // Styles pour les boutons outline-light
+    .btn-outline-light {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.5) !important;
+            color: white !important;
+        }
+    }
+
+    // Styles pour les éléments muted
+    .text-muted {
+        color: rgba(255, 255, 255, 0.5) !important;
+    }
+
+    // Styles pour les listes
+    ul {
+        li {
+            color: rgba(255, 255, 255, 0.8) !important;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    // Styles pour les icônes
+    i {
+        color: rgba(255, 255, 255, 0.7) !important;
     }
 
     .footer-links {
