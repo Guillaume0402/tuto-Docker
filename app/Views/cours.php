@@ -405,10 +405,7 @@
                         <?php endif; ?>
 
                         <div class="mt-auto">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-success fs-5">
-                                    <i class="fas fa-heart me-1"></i>GRATUIT
-                                </span>
+                            <div class="d-flex justify-content-end align-items-center">
                                 <div class="btn-group">
                                     <a href="<?= url('/cours/' . $course['id']) ?>" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-eye me-1"></i>Détails
