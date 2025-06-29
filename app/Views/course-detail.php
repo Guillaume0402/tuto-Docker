@@ -169,10 +169,10 @@
 
                                         <?php if ($isEnrolled): ?>
                                             <div class="mt-3">
-                                                <button class="btn btn-primary btn-sm">
+                                                <a href="/cours/<?= $course['id'] ?>/chapitre/<?= $chapter['id'] ?>" class="btn btn-primary btn-sm">
                                                     <i class="fas fa-play me-1"></i>
                                                     Commencer ce chapitre
-                                                </button>
+                                                </a>
                                             </div>
                                         <?php endif; ?>
                                     </div>

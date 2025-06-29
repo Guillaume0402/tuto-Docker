@@ -211,9 +211,9 @@ class Course
     public function isUserEnrolled($userId, $courseId)
     {
         if ($this->db === null) {
-            // Sans base de données, simuler que l'utilisateur est inscrit aux cours 1, 2, 3
+            // Sans base de données, simuler que l'utilisateur est inscrit à tous les cours
             // pour les tests (normalement récupéré depuis la BDD)
-            return in_array($courseId, [1, 2, 3]);
+            return true;
         }
 
         $query = "SELECT COUNT(*) FROM enrollments WHERE user_id = :user_id AND course_id = :course_id";

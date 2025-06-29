@@ -27,6 +27,10 @@ $router->get('/course/{id}', 'CourseController', 'show');
 $router->post('/cours/{id}/enroll', 'CourseController', 'enroll');
 $router->post('/course/{id}/enroll', 'CourseController', 'enroll');
 
+// Routes pour les chapitres
+$router->get('/cours/{id}/chapitre/{chapter}', 'CourseController', 'chapter');
+$router->get('/course/{id}/chapter/{chapter}', 'CourseController', 'chapter');
+
 // Routes pour le contact
 $router->get('/contact', 'ContactController', 'index');
 $router->post('/contact', 'ContactController', 'index');
