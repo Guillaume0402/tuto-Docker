@@ -45,7 +45,7 @@ class Router
                 }
             }
         }
-
+    
         // Aucune route trouvée
         throw new Exception("Route non trouvée : {$method} {$uri}");
     }

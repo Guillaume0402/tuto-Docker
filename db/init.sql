@@ -62,6 +62,18 @@ CREATE TABLE enrollments (
     UNIQUE KEY unique_enrollment (user_id, course_id)
 );
 
+-- Table de progression des chapitres
+CREATE TABLE IF NOT EXISTS chapter_progress (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    chapter_number INT NOT NULL,
+    completed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unique_progress (user_id, course_id, chapter_number),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
+
 -- Insertion de données d'exemple
 INSERT INTO
     users (

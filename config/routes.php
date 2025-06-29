@@ -39,10 +39,14 @@ $router->post('/contact', 'ContactController', 'index');
 $router->get('/about', 'HomeController', 'about');
 $router->get('/a-propos', 'HomeController', 'about');
 
-// Routes API (optionnel, pour les requêtes AJAX)
+// =========================
+// ROUTES API (AJAX uniquement)
+// =========================
 $router->get('/api/courses', 'ApiController', 'courses');
 $router->get('/api/course/{id}', 'ApiController', 'course');
 $router->post('/api/contact', 'ApiController', 'contact');
+$router->post('/api/cours/{id}/chapitre/{chapter}/complete', 'CourseController', 'markChapterComplete');
+$router->post('/api/course/{id}/chapter/{chapter}/complete', 'CourseController', 'markChapterComplete');
 
 // Route catch-all pour les erreurs 404 (doit être en dernier)
 // $router->get('.*', 'ErrorController', 'notFound');

@@ -122,15 +122,74 @@ class CourseController extends Controller
             exit;
         }
 
+        // Récupérer la progression actuelle
+        $enrollmentModel = new Enrollment();
+        $totalChapters = 5; // Nombre total de chapitres pour ce cours
+        $currentProgress = $enrollmentModel->getCourseProgress($userId, $id, $totalChapters);
+        $completedChapters = $enrollmentModel->getCompletedChapters($userId, $id);
+
         $data = [
             'title' => $chapterContent['title'] . ' - ' . $course['title'],
             'course' => $course,
             'chapter' => $chapterContent,
             'chapterNumber' => $chapterNumber,
-            'courseId' => $id
+            'courseId' => $id,
+            'currentProgress' => $currentProgress,
+            'completedChapters' => $completedChapters,
+            'totalChapters' => $totalChapters
         ];
 
         $this->view('chapter', $data);
+    }
+
+    /**
+     * Marque un chapitre comme terminé (AJAX)
+     */
+    public function markChapterComplete($id, $chapterNumber)
+    {
+        // Vérifier si l'utilisateur est connecté
+        if (!Session::get('user_id')) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Utilisateur non connecté']);
+            exit;
+        }
+
+        $userId = Session::get('user_id');
+        $courseModel = new Course();
+        $enrollmentModel = new Enrollment();
+
+        // Vérifier si l'utilisateur est inscrit au cours
+        if (!$courseModel->isUserEnrolled($userId, $id)) {
+            http_response_code(403);
+            echo json_encode(['error' => 'Vous devez être inscrit à ce cours']);
+            exit;
+        }
+
+        // Marquer le chapitre comme terminé
+        if ($enrollmentModel->markChapterComplete($userId, $id, $chapterNumber)) {
+            // Calculer la nouvelle progression
+            $totalChapters = 5; // Nombre total de chapitres pour ce cours
+            $newProgress = $enrollmentModel->getCourseProgress($userId, $id, $totalChapters);
+            $completedChapters = $enrollmentModel->getCompletedChapters($userId, $id);
+
+            // Mettre à jour la progression générale du cours
+            $enrollmentModel->updateProgress($userId, $id, $newProgress);
+
+            // Retourner la réponse JSON
+            header('Content-Type: application/json');
+            echo json_encode([
+                'success' => true,
+                'progress' => $newProgress,
+                'completedChapters' => $completedChapters,
+                'totalChapters' => $totalChapters,
+                'message' => 'Chapitre marqué comme terminé avec succès !'
+            ]);
+            exit;
+        } else {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erreur lors de la mise à jour de la progression']);
+            exit;
+        }
     }
 
     private function loadChapterContent($courseId, $chapterNumber)

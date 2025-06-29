@@ -205,14 +205,63 @@ class Enrollment
 
         $query = "UPDATE {$this->table} 
                   SET progress = :progress,
-                      completed_at = CASE WHEN :progress = 100 THEN NOW() ELSE NULL END
+                      completed_at = CASE WHEN :progress2 = 100 THEN NOW() ELSE NULL END
                   WHERE user_id = :user_id AND course_id = :course_id";
 
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':progress', $progress, PDO::PARAM_STR);
+        $stmt->bindParam(':progress2', $progress, PDO::PARAM_STR);
         $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $stmt->bindParam(':course_id', $courseId, PDO::PARAM_INT);
 
         return $stmt->execute();
+    }
+
+    /**
+     * Marque un chapitre comme terminé pour un utilisateur
+     */
+    public function markChapterComplete($userId, $courseId, $chapterNumber)
+    {
+        if ($this->db === null) {
+            return false;
+        }
+        // Insère ou ignore si déjà existant
+        $query = "INSERT IGNORE INTO chapter_progress (user_id, course_id, chapter_number, completed_at)
+                  VALUES (:user_id, :course_id, :chapter_number, NOW())";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':course_id', $courseId, PDO::PARAM_INT);
+        $stmt->bindParam(':chapter_number', $chapterNumber, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    /**
+     * Retourne le nombre de chapitres terminés pour un utilisateur dans un cours
+     */
+    public function getCompletedChapters($userId, $courseId)
+    {
+        if ($this->db === null) {
+            return 0;
+        }
+        $query = "SELECT COUNT(*) FROM chapter_progress WHERE user_id = :user_id AND course_id = :course_id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $stmt->bindParam(':course_id', $courseId, PDO::PARAM_INT);
+        $stmt->execute();
+        return (int)$stmt->fetchColumn();
+    }
+
+    /**
+     * Calcule la progression réelle d'un utilisateur dans un cours (en %)
+     * @param int $userId
+     * @param int $courseId
+     * @param int $totalChapters
+     * @return float
+     */
+    public function getCourseProgress($userId, $courseId, $totalChapters)
+    {
+        if ($totalChapters <= 0) return 0;
+        $completed = $this->getCompletedChapters($userId, $courseId);
+        return round(($completed / $totalChapters) * 100, 2);
     }
 }

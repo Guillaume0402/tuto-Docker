@@ -7,12 +7,12 @@ require_once '../config/config.php';
 // Récupération de l'URL demandée
 $requestUri = $_SERVER['REQUEST_URI'];
 $scriptName = $_SERVER['SCRIPT_NAME'];
-$basePath = dirname($scriptName);
+// $basePath = dirname($scriptName);
 
 // Nettoyage de l'URI
-if ($basePath !== '/') {
-    $requestUri = substr($requestUri, strlen($basePath));
-}
+// if ($basePath !== '/') {
+//     $requestUri = substr($requestUri, strlen($basePath));
+// }
 
 // Suppression des paramètres GET de l'URI
 $requestUri = strtok($requestUri, '?');

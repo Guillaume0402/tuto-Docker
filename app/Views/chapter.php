@@ -40,11 +40,14 @@
                         <div class="mb-4">
                             <div class="d-flex justify-content-between align-items-center mb-2">
                                 <small class="text-muted fw-medium">Progression du cours</small>
-                                <small class="text-muted fw-bold">25%</small>
+                                <small class="text-muted fw-bold" id="progressPercentage"><?= $currentProgress ?>%</small>
                             </div>
                             <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-gradient-success" style="width: 25%"></div>
+                                <div class="progress-bar bg-gradient-success" id="progressBar" style="width: <?= $currentProgress ?>%"></div>
                             </div>
+                            <small class="text-muted mt-2 d-block">
+                                <?= $completedChapters ?> sur <?= $totalChapters ?> chapitres terminés
+                            </small>
                         </div>
 
                         <!-- Navigation entre chapitres -->
@@ -320,24 +323,90 @@
             }
         });
 
-        // Mark as complete avec animation
+        // Mark as complete avec AJAX
         document.getElementById('markComplete').addEventListener('click', function() {
-            this.innerHTML = '<i class="fas fa-check me-2"></i>Chapitre terminé !';
-            this.classList.remove('btn-success');
-            this.classList.add('btn-outline-success');
-            this.disabled = true;
+            const button = this;
+            const originalText = button.innerHTML;
 
-            // Animation de succès
-            this.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
+            // Désactiver le bouton et montrer un état de chargement
+            button.disabled = true;
+            button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mise à jour...';
 
-            // Confetti effect (optionnel)
-            createConfetti();
+            // Faire l'appel AJAX
+            fetch(`/api/cours/<?= $courseId ?>/chapitre/<?= $chapterNumber ?>/complete`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Mettre à jour l'interface
+                        button.innerHTML = '<i class="fas fa-check me-2"></i>Chapitre terminé !';
+                        button.classList.remove('btn-success');
+                        button.classList.add('btn-outline-success');
 
-            console.log('Chapitre marqué comme terminé');
+                        // Mettre à jour la barre de progression
+                        const progressBar = document.getElementById('progressBar');
+                        const progressPercentage = document.getElementById('progressPercentage');
+
+                        progressBar.style.width = data.progress + '%';
+                        progressPercentage.textContent = data.progress + '%';
+
+                        // Mettre à jour le texte de progression
+                        const progressText = document.querySelector('.progress + small');
+                        if (progressText) {
+                            progressText.textContent = `${data.completedChapters} sur ${data.totalChapters} chapitres terminés`;
+                        }
+
+                        // Animation de succès
+                        button.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            button.style.transform = 'scale(1)';
+                        }, 200);
+
+                        // Effet confetti
+                        createConfetti();
+
+                        // Afficher un message de succès
+                        showNotification('Chapitre marqué comme terminé avec succès !', 'success');
+
+                    } else {
+                        // En cas d'erreur, remettre le bouton dans son état initial
+                        button.disabled = false;
+                        button.innerHTML = originalText;
+                        showNotification(data.error || 'Erreur lors de la mise à jour', 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    button.disabled = false;
+                    button.innerHTML = originalText;
+                    showNotification('Erreur de connexion', 'error');
+                });
         });
+
+        // Fonction pour afficher des notifications
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `alert alert-${type === 'error' ? 'danger' : type} alert-dismissible fade show position-fixed`;
+            notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
+            notification.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+
+            document.body.appendChild(notification);
+
+            // Auto-suppression après 5 secondes
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
 
         // Animation des éléments au scroll
         const observerOptions = {
