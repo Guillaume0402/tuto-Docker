@@ -2,6 +2,29 @@
 
 Historique des versions importantes de la **Formation Docker 100% Gratuite**.
 
+## [Non publié] - Nettoyage et réorganisation
+
+### ✨ Ajouté
+
+-   Documentation consolidée dans `/docs/`
+-   Structure organisée des scripts dans `/scripts/`
+-   Scripts de formation dans `/training/`
+-   Guide technique détaillé (TECHNICAL.md)
+-   Guide de contribution complet (CONTRIBUTING.md)
+
+### 🔧 Modifié
+
+-   Nettoyage des fichiers vides et redondants
+-   Réorganisation de l'arborescence du projet
+-   Fusion des documentations dispersées
+
+### 🗑️ Supprimé
+
+-   11 fichiers .md vides (CHANGELOG-SIMPLE.md, CONTRIBUTING-SIMPLE.md, etc.)
+-   4 fichiers de test PHP vides (test-app.php, test-dashboard-stats.php, etc.)
+-   Fichier temporaire temp_cours.html
+-   Dossier `documents/` redondant
+
 ## [1.1.0] - 2025-06-27 - 🎁 Transformation vers la gratuité complète
 
 ### ✨ Nouveau

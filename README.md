@@ -358,6 +358,15 @@ make test-e2e
 -   [ ] **Communauté** et forums
 -   [ ] **Marketplace** de modules tiers
 
+## 📖 Documentation
+
+### Ressources disponibles
+
+-   📚 **[DOCS.md](documents/DOCS.md)** - Documentation technique détaillée
+-   💖 **[WHY-FREE.md](documents/WHY-FREE.md)** - Pourquoi cette formation est gratuite
+-   📋 **[CHANGELOG.md](documents/CHANGELOG.md)** - Historique des versions
+-   🤝 **[CONTRIBUTING.md](documents/CONTRIBUTING.md)** - Guide de contribution
+
 ## 🤝 Support et communauté
 
 ### Obtenir de l'aide
