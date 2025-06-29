@@ -69,3 +69,16 @@ body {
         }
     }
 }
+
+/* Correction de lisibilité pour les descriptions de chapitres */
+.chapter-description {
+    color: #666 !important;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    margin-top: 0.25rem;
+}
+
+/* Amélioration de la lisibilité dans les accordéons de cours */
+.course-content .text-muted.small {
+    color: #666 !important;
+}

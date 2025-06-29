@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test CSS Chapter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/chapter.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Test des styles de description de chapitres</h1>
+
+        <div class="accordion" id="courseChapters">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="heading1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse1">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-play-circle text-primary me-3" style="font-size: 1.2rem;"></i>
+                            <div>
+                                <div class="fw-semibold">Chapitre 1 : Introduction à Docker</div>
+                                <div class="text-muted small">Qu'est-ce que Docker ? Pourquoi l'utiliser ?</div>
+                            </div>
+                        </div>
+                    </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <div class="text-muted small">
+                            Cette description devrait maintenant être plus lisible avec la couleur #555 au lieu de
+                            #6c757d.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-list mt-4">
+            <h3>Test dans une liste de chapitres</h3>
+            <div class="chapter-item">
+                <h4>Chapitre Test</h4>
+                <div class="text-muted">Cette description dans la liste devrait être lisible.</div>
+            </div>
+        </div>
+
+        <div class="course-content mt-4">
+            <h3>Test dans le contenu de cours</h3>
+            <p class="text-muted">Ce texte muted dans le contenu de cours devrait être plus lisible.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

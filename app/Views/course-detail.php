@@ -155,7 +155,7 @@
                                         <div class="d-flex justify-content-between align-items-center w-100 me-3">
                                             <div>
                                                 <strong><?= htmlspecialchars($chapter['title']) ?></strong>
-                                                <div class="text-muted small"><?= htmlspecialchars($chapter['description']) ?></div>
+                                                <div class="chapter-description"><?= htmlspecialchars($chapter['description']) ?></div>
                                             </div>
                                             <div class="text-end">
                                                 <span class="badge bg-secondary"><?= $chapter['duration'] ?></span>
